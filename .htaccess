@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^(application|system) - [F,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule .* index.php/$0 [PT,L]
