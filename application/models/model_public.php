@@ -29,6 +29,32 @@ class Model_public extends CI_Model {
 		return $data;
 	}
 
+	public function _getType($filter = array(),$select='*')
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->where('m_type_active', 'Y');
+		$this->db->select($select);
+		$data = $this->db->get('m_type');
+		return $data;
+	}
+
+	public function _getTransmisi($filter = array(),$select='*')
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->where('m_transmisi_active', 'Y');
+		$this->db->select($select);
+		$data = $this->db->get('m_transmisi');
+		return $data;
+	}
+
 	public function insert($table,$data)
 	{
 		$userid = $this->session->userdata('user_id');

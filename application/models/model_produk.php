@@ -45,11 +45,10 @@ class Model_produk extends CI_Model {
             $r[1] = $i;
             $r[2] = $d['m_product_nama'];
             $r[3] = $d['m_categories_nama'];
-            $r[4] = $d['m_product_price'];
             if ($d['m_product_active'] == 'T') {
                 $icondelete = '<a class="btndelete" data-aktif="T" style="cursor:pointer;" title="Klik untuk mengaktifkan"><i class="fa fa-remove"></i></a>';
             }
-            $r[5] = '<a class="btnupload" style="cursor:pointer;" data-id="'.$d['m_product_id'].'" title="Upload Foto"><i class="fa fa-upload"></i></a>
+            $r[4] = '<a class="btnupload" style="cursor:pointer;" data-id="'.$d['m_product_id'].'" title="Upload Foto"><i class="fa fa-upload"></i></a>
             <a class="btnedit" style="cursor:pointer;" title="Edit"><i class="fa fa-edit"></i></a>
             '.$icondelete;
             array_push($result, $r);
@@ -64,6 +63,63 @@ class Model_produk extends CI_Model {
     }
 
     public function _getFoto()
+    {
+        $dataorder = array();
+        // $dataorder[3] = "tgl_awal_beasiswa";
+        // $dataorder[4] = "tgl_akhir_beasiswa";
+
+        $search = $this->input->post("search");
+        $idproduk = $this->input->post("idproduk");
+        $iDisplayLength = intval($_REQUEST['length']);
+        $iDisplayStart = intval($_REQUEST['start']);
+        $sEcho = intval($_REQUEST['draw']);
+        $start = intval($_REQUEST['start']);
+        $order = $this->input->post('order');
+
+        $query = "SELECT t_photoproduct.*
+                FROM t_photoproduct 
+                WHERE m_product_id = ".$idproduk;
+        if($search['value'] != ""){
+            $query .=preg_match("/WHERE/i",$query)? " AND ":" WHERE ";
+            $query .= "(m_product_nama LIKE '%". $search['value'] ."%')";
+        }
+        // OR PROGRAM_TAHUN LIKE '%". strtolower($search) ."%'
+        // var_dump($order);
+        if($order[0]['column']){
+            $query.= " order by 
+                ".$dataorder[$order[0]["column"]]." ".$order[0]["dir"];
+        }
+
+        $iTotalRecords = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM (".$query.") A")->row()->JUMLAH;
+
+        $query .= " LIMIT ". ($start) .",".(($start) + $iDisplayLength);
+        
+        $data = $this->db->query($query)->result_array();
+        $i = $start + 1;
+        $result = array();
+        foreach ($data as $d) {
+            $r = array();
+            $icondelete = '<a class="btnaktif" data-aktif="1" style="cursor:pointer;" title="Klik untuk menonaktifkan menjadi foto utama"><i class="fa fa-check"></i></a>';
+            $r[0] = $d['t_photoproduct_id'];
+            $r[1] = $i;
+            $r[2] = '<img src="'.base_url().'foto_product/'.$idproduk.'/'.$d['t_photoproduct_nama'].'" width="128" height="128" />';
+            if ($d['t_photoproduct_main'] == '0') {
+                $icondelete = '<a class="btnaktif" data-aktif="0" style="cursor:pointer;" title="Klik untuk menjadikan foto utama"><i class="fa fa-remove"></i></a>';
+            }
+            $r[3] = '<a class="btndelete" style="cursor:pointer;" title="Hapus Foto"><i class="fa fa-trash-o"></i></a>
+            '.$icondelete;
+            array_push($result, $r);
+            $i++;
+        }
+
+        $records["data"] = $result;
+        $records["draw"] = $sEcho;
+        $records["recordsTotal"] = $iTotalRecords;
+        $records["recordsFiltered"] = $iTotalRecords;
+        return $records;
+    }
+
+    public function _getHarga()
 	{
 		$dataorder = array();
         // $dataorder[3] = "tgl_awal_beasiswa";
@@ -77,8 +133,10 @@ class Model_produk extends CI_Model {
         $start = intval($_REQUEST['start']);
         $order = $this->input->post('order');
 
-		$query = "SELECT t_photoproduct.*
-				FROM t_photoproduct 
+		$query = "SELECT t_price.*,m_type_nama,m_transmisi_nama
+				FROM t_price
+                LEFT JOIN m_type ON t_price.m_type_id = m_type.m_type_id
+                LEFT JOIN m_transmisi ON t_price.m_transmisi_id = m_transmisi.m_transmisi_id 
                 WHERE m_product_id = ".$idproduk;
 		if($search['value'] != ""){
             $query .=preg_match("/WHERE/i",$query)? " AND ":" WHERE ";
@@ -100,15 +158,13 @@ class Model_produk extends CI_Model {
         $result = array();
         foreach ($data as $d) {
             $r = array();
-            $icondelete = '<a class="btnaktif" data-aktif="1" style="cursor:pointer;" title="Klik untuk menonaktifkan menjadi foto utama"><i class="fa fa-check"></i></a>';
-			$r[0] = $d['t_photoproduct_id'];
+            $r[0] = $d['t_price_id'];
 			$r[1] = $i;
-            $r[2] = '<img src="'.base_url().'foto_product/'.$idproduk.'/'.$d['t_photoproduct_nama'].'" width="128" height="128" />';
-			if ($d['t_photoproduct_main'] == '0') {
-                $icondelete = '<a class="btnaktif" data-aktif="0" style="cursor:pointer;" title="Klik untuk menjadikan foto utama"><i class="fa fa-remove"></i></a>';
-            }
-            $r[3] = '<a class="btndelete" style="cursor:pointer;" title="Hapus Foto"><i class="fa fa-trash-o"></i></a>
-            '.$icondelete;
+            $r[2] = $d['m_type_nama'];
+            $r[3] = $d['m_transmisi_nama'];
+            $r[4] = $d['t_price_nominal'];
+			$r[5] = '<a class="btndelete" style="cursor:pointer;" title="Hapus Foto"><i class="fa fa-trash-o"></i></a>
+            <a class="btnedit" style="cursor:pointer;" title="Edit"><i class="fa fa-edit"></i></a>';
             array_push($result, $r);
             $i++;
         }
@@ -125,18 +181,12 @@ class Model_produk extends CI_Model {
         $id = $this->input->post('idproduk');
         $nama = $this->input->post('namaproduk');
         $kategori = $this->input->post('kategori');
-        $price = $this->input->post('price');
-        $disc = $this->input->post('disc');
-        $price2 = $this->input->post('price2');
         $desc = $this->input->post('desc');
 
         $filter = array('m_product_id'=>$id);
         $data = array(
             'm_product_nama'=>$nama,
             'm_product_desc'=>$desc,
-            'm_product_disc'=>$disc,
-            'm_product_price'=>$price,
-            'm_product_price_disc'=>$price2,
             'm_categories_id'=>$kategori,
         );
         
@@ -220,6 +270,40 @@ class Model_produk extends CI_Model {
             $result['status'] = true;
         }else{
             $result['message'] = array('error'=>'Data gagal '.$desc);
+            $result['status'] = false;
+        }
+        return $result;
+    }
+
+    public function _save_harga()
+    {
+        $idharga = $this->input->post('idharga');
+        $idproduk = $this->input->post('idproduk');
+        $tipe = $this->input->post('tipe');
+        $transmisi = $this->input->post('transmisi');
+        $harga = $this->input->post('harga');
+        $data = array(
+            'm_product_id'=>$idproduk,
+            'm_type_id'=>$tipe,
+            'm_transmisi_id'=>$transmisi,
+            't_price_nominal'=>$harga,
+        );
+        
+        if ($idharga) {
+            $filter = array('t_price_id'=>$idharga);
+            $desc = 'diubah';
+            $this->db->where($filter);
+            $this->model_public->update('t_price',$data);
+        }else{
+            $desc = 'ditambah';
+            $this->model_public->insert('t_price', $data);
+        }
+
+        if ($this->db->affected_rows()>0) {
+            $result['message'] = 'Data berhasil '.$desc;
+            $result['status'] = true;
+        }else{
+            $result['message'] = 'Data gagal '.$desc;
             $result['status'] = false;
         }
         return $result;

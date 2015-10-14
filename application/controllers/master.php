@@ -16,10 +16,17 @@ class Master extends CI_Controller {
 		$this->load->view('main', $data, FALSE);
 	}
 
-	public function user()
+	public function type()
 	{
 		$data = array();
-		$data['content'] = $this->load->view('view_user', $data,TRUE);
+		$data['content'] = $this->load->view('view_type', $data,TRUE);
+		$this->load->view('main', $data, FALSE);
+	}
+
+	public function transmisi()
+	{
+		$data = array();
+		$data['content'] = $this->load->view('view_transmisi', $data,TRUE);
 		$this->load->view('main', $data, FALSE);
 	}
 
@@ -27,6 +34,8 @@ class Master extends CI_Controller {
 	{
 		$data = array();
 		$data['categories'] = $this->model_public->_getCategories();
+		$data['type'] = $this->model_public->_getType();
+		$data['transmisi'] = $this->model_public->_getTransmisi();
 		$data['content'] = $this->load->view('view_product', $data,TRUE);
 		$this->load->view('main', $data, FALSE);
 	}

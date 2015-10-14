@@ -22,6 +22,9 @@ class Produk extends CI_Controller {
 			case 'getFoto':
 				$this->_getFoto();
 				break;
+			case 'getHarga':
+				$this->_getHarga();
+				break;
 			case 'update':
 				$this->_update();
                 break;
@@ -36,6 +39,9 @@ class Produk extends CI_Controller {
                 break;
             case 'setmainfoto':
             	$this->_setmainfoto();
+                break;
+            case 'save_harga':
+            	$this->_save_harga();
                 break;
 			default:
 				echo 'no task request';
@@ -52,6 +58,12 @@ class Produk extends CI_Controller {
 	public function _getFoto()
 	{
 		$records = $this->model_produk->_getFoto();
+        $this->output->set_content_type('application/json')->set_output(json_encode($records));
+	}
+
+	public function _getHarga()
+	{
+		$records = $this->model_produk->_getHarga();
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
 	}
 
@@ -76,6 +88,12 @@ class Produk extends CI_Controller {
 	public function _setmainfoto()
 	{
 		$records = $this->model_produk->_setmainfoto();
+        $this->output->set_content_type('application/json')->set_output(json_encode($records));
+	}
+
+	public function _save_harga()
+	{
+		$records = $this->model_produk->_save_harga();
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
 	}
 

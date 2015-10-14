@@ -80,7 +80,11 @@
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo base_url() ?>master/kategori">Kategori</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>master/product">Product</a>
+                                        <li><a href="<?php echo base_url() ?>master/type">Tipe</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>master/transmisi">Transmisi</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>master/product">Produk</a>
                                         </li>
                                     </ul>
                                 </li>   

@@ -43,7 +43,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <form class="form-horizontal form-label-left" data-parsley-validate="" id="formproduk" novalidate="">
+                <form class="form-horizontal form-label-left" id="formproduk" >
                     <input type="hidden" name="idproduk" id="idproduk" />
                     <div class="form-group">
                         <label for="namaproduk" class="control-label col-md-3 col-sm-3 col-xs-12">Nama produk
@@ -56,8 +56,8 @@
                         <label for="kategori" class="control-label col-md-3 col-sm-3 col-xs-12">kategori produk
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control" name="kategori" id="kategori">
-                                <option>Pilih Kategori</option>
+                            <select class="form-control" name="kategori" id="kategori" required>
+                                <option value="">Pilih Kategori</option>
                                 <?php if ($categories->num_rows > 0): ?>
                                     <?php foreach ($categories->result() as $r): ?>
                                         <option value="<?php echo $r->m_categories_id; ?>"><?php echo $r->m_categories_nama; ?></option>
@@ -67,27 +67,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="control-label col-md-3 col-sm-3 col-xs-12">Harga produk</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" required="required" name="price" id="price">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="disc" class="control-label col-md-3 col-sm-3 col-xs-12">Diskon produk</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" required="required" name="disc" id="disc">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="price2" class="control-label col-md-3 col-sm-3 col-xs-12">Harga Produk Setelah Diskon</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" required="required" name="price2" id="price2">
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi produk</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea class="resizable_textarea form-control" style="width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 87px;" name="desc" id="desc">
+                            <textarea class="resizable_textarea form-control" required style="width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 87px;" name="desc" id="desc">
 
                             </textarea>
                         </div>
@@ -176,6 +158,95 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
+                <h2>Tabel Harga produk</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><!-- <i class="fa fa-wrench"></i> --></a>
+                    </li>
+                    <li>
+                    </li>
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form class="form-horizontal form-label-left" id="formharga" >
+                    <input type="hidden" name="idproduk" id="idproduk3" />
+                    <input type="hidden" name="idharga" id="idharga" />
+                    <div class="form-group">
+                        <label for="tipe" class="control-label col-md-3 col-sm-3 col-xs-12">Tipe
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="form-control" name="tipe" id="tipe" required>
+                                <option value="">Pilih Tipe</option>
+                                <?php if ($type->num_rows > 0): ?>
+                                    <?php foreach ($type->result() as $r): ?>
+                                        <option value="<?php echo $r->m_type_id; ?>"><?php echo $r->m_type_nama; ?></option>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transmisi" class="control-label col-md-3 col-sm-3 col-xs-12">Transmisi
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select class="form-control" name="transmisi" id="transmisi" required>
+                                <option value="">Pilih Transmisi</option>
+                                <?php if ($transmisi->num_rows > 0): ?>
+                                    <?php foreach ($transmisi->result() as $r): ?>
+                                        <option value="<?php echo $r->m_transmisi_id; ?>"><?php echo $r->m_transmisi_nama; ?></option>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="harga" class="control-label col-md-3 col-sm-3 col-xs-12">Harga                       </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control col-md-7 col-xs-12" required name="harga" id="harga">
+                        </div>
+                    </div>
+                    
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-success" type="submit">Simpan</button>
+                            <button class="btn btn-primary" id="btnbatal">Batal</button>
+                        </div>
+                    </div>
+
+                </form>
+                <table id="tabelharga" class="table table-striped responsive-utilities jambo_table">
+                    <thead>
+                        <tr class="headings">
+                            <th></th>
+                            <th>
+                                No
+                            </th>
+                            <th>Tipe </th>
+                            <th>Transmisi </th>
+                            <th>Harga </th>
+                            <th class=" no-link last"><span class="nobr">Action</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
                 <h2>Tabel produk</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li class="dropdown">
@@ -198,7 +269,6 @@
                             </th>
                             <th>Nama produk </th>
                             <th>Kategori produk </th>
-                            <th>Harga produk </th>
                             <th class=" no-link last"><span class="nobr">Action</span>
                             </th>
                         </tr>
@@ -296,7 +366,6 @@
             {"orderable":false },
             {"orderable":false },
             {"orderable":false },
-            {"orderable":false },
             {"orderable":false}
           ],
           pagingType: "bootstrapPager",
@@ -343,6 +412,34 @@
           paginate: true
         });
 
+        var tableharga = $('#tabelharga').DataTable({
+          // "order": [[ 4, "asc" ]],
+          "columns": [
+            {"visible" : false,"orderable":false },
+            {"orderable":false },
+            {"orderable":false },
+            {"orderable":false },
+            {"orderable":false },
+            {"orderable":false }
+          ],
+          pagingType: "bootstrapPager",
+          "sDom": "Rrtlip",
+          pagerSettings: {
+              searchOnEnter: true,
+              language: "Halaman ~ Dari ~"
+          },
+          processing: true,
+          serverSide: true,
+          ajax: {
+            url: "<?php echo base_url(); ?>produk/index/getHarga",
+            type: "POST",
+            data: function (d) {
+                d.idproduk = idproduk;
+            }
+          },
+          paginate: true
+        });
+
         table.on('xhr.dt', function (e, settings, json) {
               setTimeout(function () {
                   initEvent();
@@ -352,6 +449,12 @@
         tablefoto.on('xhr.dt', function (e, settings, json) {
               setTimeout(function () {
                   initEvent2();
+              }, 500);
+        });
+
+        tableharga.on('xhr.dt', function (e, settings, json) {
+              setTimeout(function () {
+                  initEvent3();
               }, 500);
         });
 
@@ -412,6 +515,63 @@
         }
 
         function initEvent2() {
+            $(".btndelete").click(function (e) {
+                var sure = confirm("Apakah Anda yakin?");
+                e.preventDefault();
+                var parent = $(this).parent().parent();
+                var dataedit = tablefoto.row( parent ).data();
+                var id = dataedit[0];
+                if (sure) {
+                    $.post("<?php echo base_url(); ?>produk/index/deletefoto", {'idfoto': id,'idproduk':idproduk}, function (response) {
+                        if(response.status){
+                            NotifikasiToast({
+                                type : 'success', // ini tipe notifikasi success,warning,info,error
+                                msg : response.message, //ini isi pesan
+                                title : '', //ini judul pesan
+                            });
+                            tablefoto.ajax.reload();
+                        }
+                        else{
+                            NotifikasiToast({
+                                type : 'error', // ini tipe notifikasi success,warning,info,error
+                                msg : response.message, //ini isi pesan
+                                title : '', //ini judul pesan
+                            });
+                        }
+                    });
+                };
+            });
+
+            $(".btnaktif").click(function (e) {
+                var sure = confirm("Apakah Anda yakin?");
+                e.preventDefault();
+                var parent = $(this).parent().parent();
+                var dataedit = tablefoto.row( parent ).data();
+                var id = dataedit[0];
+                var aktif = $(this).data().aktif;
+                if (sure) {
+                    $.post("<?php echo base_url(); ?>produk/index/setmainfoto", {'idfoto': id,aktif:aktif}, function (response) {
+                        if(response.status){
+                            NotifikasiToast({
+                                type : 'success', // ini tipe notifikasi success,warning,info,error
+                                msg : response.message, //ini isi pesan
+                                title : '', //ini judul pesan
+                            });
+                            tablefoto.ajax.reload();
+                        }
+                        else{
+                            NotifikasiToast({
+                                type : 'error', // ini tipe notifikasi success,warning,info,error
+                                msg : response.message, //ini isi pesan
+                                title : '', //ini judul pesan
+                            });
+                        }
+                    });
+                };
+            });
+        }
+
+        function initEvent3() {
             $(".btndelete").click(function (e) {
                 var sure = confirm("Apakah Anda yakin?");
                 e.preventDefault();
@@ -535,6 +695,41 @@
                 $('.progress-bar').attr("style", "width:" + Math.round(Percentage) + "%;\"");
             }
         }
+
+        $("#formharga").submit(function(e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            $.ajax({
+                url: '<?php echo base_url(); ?>produk/index/save_harga',
+                type: 'POST',
+                dataType: 'json',
+                data: data
+            })
+            .done(function(response) {
+                if (response.status) {
+                    NotifikasiToast({
+                        type : 'success', // ini tipe notifikasi success,warning,info,error
+                        msg : response.message, //ini isi pesan
+                        title : '', //ini judul pesan
+                    });
+                    tableharga.ajax.reload();
+                }else{
+                     NotifikasiToast({
+                        type : 'error', // ini tipe notifikasi success,warning,info,error
+                        msg : response.message.error, //ini isi pesan
+                        title : '', //ini judul pesan
+                    });
+                }
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+            
+            return false;
+        });
 
     });
 </script>
