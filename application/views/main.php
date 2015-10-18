@@ -27,6 +27,7 @@
 
     
     <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/numeral/numeral.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url(); ?>assets/ckeditor/adapters/jquery.js"></script> 
 

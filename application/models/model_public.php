@@ -33,6 +33,18 @@ class Model_public extends CI_Model {
 		return $data;
 	}
 
+	public function _getFotoProduct($filter = array(),$select='*')
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->select($select);
+		$data = $this->db->get('t_photoproduct');
+		return $data;
+	}
+
 	public function _getType($filter = array(),$select='*')
 	{
 		if (count($filter) > 0) {
@@ -69,6 +81,12 @@ class Model_public extends CI_Model {
 		$this->db->select($select);
 		$data = $this->db->get('t_bunga');
 		return $data;
+	}
+
+	public function _getTipeProduk($idproduct = 0)
+	{
+		$this->db->where('m_product_id', $idproduct);
+		return $this->db->get('v_price');
 	}
 
 	public function _getInfoPerusahaan($filter = array(),$select='*')

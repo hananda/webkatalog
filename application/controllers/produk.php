@@ -142,13 +142,29 @@ class Produk extends CI_Controller {
 			$filter['UPPER(m_categories_nama)'] = strtoupper(str_replace("-", " ", $kategori));
 		}
 		$data['kategori'] = $this->model_public->_getcategories();
-		$data['produk'] = $this->model_public->_getProduct($filter,'*',$numperpage,$pages);
+		$data['produk'] = $this->model_public->_getProduct($filter,'*',$numperpage,$start_from);
 		$data['curr_page'] = $pages;
 		$data['countproduk'] = $this->model_public->_getProduct($filter)->num_rows;
 		$data['page'] = ceil($data['countproduk'] / $numperpage); 
 		$data['numperpage'] = $numperpage;
 		$data['perusahaan'] = $this->model_public->_getInfoPerusahaan()->row()->m_perusahaan_label_web;
 		$this->load->view('produk', $data, FALSE);
+	}
+
+	public function detail($idproduk=0)
+	{
+		$data = array();
+		$filter = array("m_product_id"=>$idproduk);
+		$data['idproduk'] = $idproduk;
+		$data['produk'] = $this->model_public->_getProduct($filter);
+		$this->db->where('t_bunga_id <> 1');
+		$data['cicilan'] = $this->model_public->_getTipeBunga();
+		$this->db->where('t_bunga_id = 1');
+		$data['dp'] = $this->model_public->_getTipeBunga()->row()->t_bunga_prosentase;
+		$data['fotoproduk'] = $this->model_public->_getFotoProduct($filter);
+		$data['tipeproduk'] = $this->model_public->_getTipeProduk($idproduk);
+		$data['perusahaan'] = $this->model_public->_getInfoPerusahaan()->row()->m_perusahaan_label_web;
+		$this->load->view('detailproduct', $data, FALSE);
 	}
 
 }

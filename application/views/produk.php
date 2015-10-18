@@ -173,7 +173,8 @@
                     <?php endif ?>
                 </div>
                 <div class="row">
-                    <center>
+                    <?php if ($produk->num_rows > 0): ?>
+                        <center>
                         <nav>
                             <ul class="pagination">
                                 <!-- <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
@@ -250,6 +251,8 @@
                             </ul>
                         </nav>
                     </center>
+                    <?php endif ?>
+                    
                 </div>
             </div>
             <style type="text/css">.kategori{cursor:pointer;}</style>
