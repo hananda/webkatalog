@@ -30,6 +30,14 @@ class Master extends CI_Controller {
 		$this->load->view('main', $data, FALSE);
 	}
 
+	public function bunga()
+	{
+		$data = array();
+		$data['bunga'] = $this->model_public->_getTipeBunga();
+		$data['content'] = $this->load->view('view_bunga', $data,TRUE);
+		$this->load->view('main', $data, FALSE);
+	}
+
 	public function product()
 	{
 		$data = array();

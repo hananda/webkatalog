@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Selamat Datang | Sani Honda</title>
+<title><?php echo $perusahaan ?></title>
 <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo base_url() ?>assets/css/docs.min.css" rel="stylesheet">
 <!-- Custom Theme files -->
@@ -25,6 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- start menu -->
 <link href="<?php echo base_url() ?>assets/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/memenu.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/numeral/numeral.min.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script> 
 <!-- /start menu -->
 </head>
@@ -46,14 +47,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="header-top">
      <div class="header-bottom">            
                 <div class="logo">
-                    <h1><a href="index.html">Sani Honda</a></h1>                  
+                    <h1><a href="<?php echo base_url(); ?>"><?php echo $perusahaan ?></a></h1>                  
                 </div>
              <!---->         
              <div class="top-nav">
                 <ul class="memenu skyblue">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li class="grid"><a href="#">Produk</a>
-                    <li class="grid"><a href="#">Tentang Kami</a>
+                    <li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="grid"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
+                    <li class="grid"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
                         <!-- <div class="mepanel">
                             <div class="row">
                                 <div class="col1 me-one">
@@ -96,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>
                         </div> -->
                     </li>
-                    <li class="grid"><a href="contact.html">Kontak Kami</a></li>                    
+                    <!-- <li class="grid"><a href="contact.html">Kontak Kami</a></li>                     -->
                 </ul>               
              </div>
              <!---->
@@ -147,118 +148,73 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   </div>
 <!---->
 <script src="<?php echo base_url() ?>assets/js/bootstrap.js"> </script>
+<style type="text/css">
+    .container h3::before {
+        background: #eee none repeat scroll 0 0;
+        content: "";
+        display: inline-block;
+        height: 2px;
+        left: 20%;
+        position: absolute;
+        top: 18px;
+        width: 18%;
+    }
 
+    .container h3::after{
+        background: #eee none repeat scroll 0 0;
+        content: "";
+        display: inline-block;
+        height: 2px;
+        position: absolute;
+        right: 20%;
+        top: 18px;
+        width: 18%;
+    }
+
+    .container h3 {
+        font-family: "Dosis-Medium";
+        font-size: 2.2em;
+        position: relative;
+        text-align: center;
+    }
+</style>
 <div class="items">
      <div class="container">
+        <h3>Produk Terbaru Kami</h3><br/>
          <div class="items-sec">
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img1.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 12000</p>
-                         <span class="pric1"><del>Rs 18000</del></span>
-                         <span class="disc">[12% Off]</span>
+            <?php if ($product['first']->num_rows > 0): ?>
+                <?php foreach ($product['first']->result() as $r): ?>
+                     <div class="col-md-3 feature-grid">
+                         <a href="<?php echo base_url() ?>produk/detail/<?php echo $r->m_product_id ?>"><img width="256" height="256" src="<?php echo base_url() ?><?php echo ($r->t_photoproduct_nama) ? 'foto_product/'.$r->m_product_id.'/'.$r->t_photoproduct_nama : 'assets/images/no-image.jpg' ; ?>" alt=""/> 
+                             <div class="arrival-info">
+                                 <h4><?php echo $r->m_product_nama; ?></h4>
+                                 <p><?php echo ($r->t_price_nominal) ? 'Rp '.number_format($r->t_price_nominal, 0, ',', '.') : 'Harga belum Tersedia'; ?></p>
+                             </div>
+                             <div class="viw">
+                                <a href="<?php echo base_url() ?>produk/detail/<?php echo $r->m_product_id ?>"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                             </div>
+                          </a>
                      </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img2.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 10000</p>
-                         <span class="pric1"><del>Rs 14000</del></span>
-                         <span class="disc">[14% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img3.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 8500</p>
-                         <span class="pric1"><del>Rs 9500</del></span>
-                         <span class="disc">[10% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img4.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 12000</p>
-                         <span class="pric1"><del>Rs 18000</del></span>
-                         <span class="disc">[12% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="clearfix"></div>
+                <?php endforeach ?>
+            <?php endif ?>
          </div>
          <div class="items-sec btm-sec">
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img5.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 500</p>
-                         <span class="pric1"><del>Rs 650</del></span>
-                         <span class="disc">[8% Off]</span>
+            <?php if ($product['second']->num_rows > 0): ?>
+                <?php foreach ($product['second']->result() as $r): ?>
+                     <div class="col-md-3 feature-grid">
+                         <a href="<?php echo base_url() ?>produk/detail/<?php echo $r->m_product_id ?>"><img width="256" height="256" src="<?php echo base_url() ?><?php echo ($r->t_photoproduct_nama) ? 'foto_product/'.$r->m_product_id.'/'.$r->t_photoproduct_nama : 'assets/images/no-image.jpg' ; ?>" alt=""/> 
+                             <div class="arrival-info">
+                                 <h4><?php echo $r->m_product_nama; ?></h4>
+                                 <p><?php echo ($r->t_price_nominal) ? 'Rp '. number_format($r->t_price_nominal, 0, ',', '.') : 'Harga belum Tersedia'; ?></p>
+                             </div>
+                             <div class="viw">
+                                <a href="<?php echo base_url() ?>produk/detail/<?php echo $r->m_product_id ?>"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                             </div>
+                          </a>
                      </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img8.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 400</p>
-                         <span class="pric1"><del>Rs 750</del></span>
-                         <span class="disc">[12% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img7.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 800</p>
-                         <span class="pric1"><del>Rs 1200</del></span>
-                         <span class="disc">[12% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="col-md-3 feature-grid">
-                 <a href="product.html"><img src="<?php echo base_url() ?>assets/images/img6.jpg" alt=""/> 
-                     <div class="arrival-info">
-                         <h4>Lighting #1</h4>
-                         <p>Rs 600</p>
-                         <span class="pric1"><del>Rs 1200</del></span>
-                         <span class="disc">[50% Off]</span>
-                     </div>
-                     <div class="viw">
-                        <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                     </div>
-                  </a>
-             </div>
-             <div class="clearfix"></div>
+                <?php endforeach ?>
+            <?php endif ?>
+            
          </div>
      </div>
 </div>
@@ -351,13 +307,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="copywrite">
      <div class="container">
          <div class="copy">
-             <p>© 2015 SaniHOnda. All Rights Reserved </p>
+             <p>© 2015 <?php echo $perusahaan ?>. All Rights Reserved </p>
          </div>
          <div class="social">                           
-                <a href="#"><i class="facebook"></i></a>
-                <a href="#"><i class="twitter"></i></a>
+                <!-- <a href="#"><i class="facebook"></i></a>
+                <a href="#"><i class="twitter"></i></a> -->
                 <!-- <a href="#"><i class="dribble"></i></a>  -->
-                <a href="#"><i class="google"></i></a>  
+                <!-- <a href="#"><i class="google"></i></a>   -->
                 <!-- <a href="#"><i class="youtube"></i></a>  -->
          </div>
          <div class="clearfix"></div>

@@ -32,6 +32,11 @@ class Model_about extends CI_Model {
         return $result;
     }
 
+    public function _getDesc()
+    {
+        $desc = $this->db->get('m_about')->row()->m_about_desc;
+        return $desc;
+    }
 }
 
 /* End of file model_about.php */

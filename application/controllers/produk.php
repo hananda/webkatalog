@@ -34,11 +34,17 @@ class Produk extends CI_Controller {
             case 'deletefoto':
             	$this->_deletefoto();
                 break;
+            case 'deleteharga':
+            	$this->_deleteharga();
+                break;
             case 'upload':
             	$this->_upload();
                 break;
             case 'setmainfoto':
             	$this->_setmainfoto();
+                break;
+            case 'setmainharga':
+            	$this->_setmainharga();
                 break;
             case 'save_harga':
             	$this->_save_harga();
@@ -85,9 +91,21 @@ class Produk extends CI_Controller {
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
 	}
 
+	public function _deleteharga()
+	{
+		$records = $this->model_produk->_deleteharga();
+        $this->output->set_content_type('application/json')->set_output(json_encode($records));
+	}
+
 	public function _setmainfoto()
 	{
 		$records = $this->model_produk->_setmainfoto();
+        $this->output->set_content_type('application/json')->set_output(json_encode($records));
+	}
+
+	public function _setmainharga()
+	{
+		$records = $this->model_produk->_setmainharga();
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
 	}
 
@@ -111,6 +129,26 @@ class Produk extends CI_Controller {
 			);
 		}
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
+	}
+
+	public function view($kategori='')
+	{
+		$data = array();
+		$filter = array();
+		$pages = ($this->input->get('pages')) ? $this->input->get('pages') : 1;
+		$numperpage = 9;
+		$start_from = ($pages-1) * $numperpage; 
+		if ($kategori) {
+			$filter['UPPER(m_categories_nama)'] = strtoupper(str_replace("-", " ", $kategori));
+		}
+		$data['kategori'] = $this->model_public->_getcategories();
+		$data['produk'] = $this->model_public->_getProduct($filter,'*',$numperpage,$pages);
+		$data['curr_page'] = $pages;
+		$data['countproduk'] = $this->model_public->_getProduct($filter)->num_rows;
+		$data['page'] = ceil($data['countproduk'] / $numperpage); 
+		$data['numperpage'] = $numperpage;
+		$data['perusahaan'] = $this->model_public->_getInfoPerusahaan()->row()->m_perusahaan_label_web;
+		$this->load->view('produk', $data, FALSE);
 	}
 
 }

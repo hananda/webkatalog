@@ -16,7 +16,7 @@ class Model_public extends CI_Model {
 		return $data;
 	}
 
-	public function _getProduct($filter = array(),$select='*')
+	public function _getProduct($filter = array(),$select='*',$limit=0,$offset=0)
 	{
 		if (count($filter) > 0) {
 			foreach ($filter as $field => $value) {
@@ -25,7 +25,11 @@ class Model_public extends CI_Model {
 		}
 		$this->db->where('m_product_active', 'Y');
 		$this->db->select($select);
-		$data = $this->db->get('m_product');
+		if ($limit && $offset) {
+			$data = $this->db->get('v_product',$limit,$offset);
+		}else{
+			$data = $this->db->get('v_product');
+		}
 		return $data;
 	}
 
@@ -52,6 +56,30 @@ class Model_public extends CI_Model {
 		$this->db->where('m_transmisi_active', 'Y');
 		$this->db->select($select);
 		$data = $this->db->get('m_transmisi');
+		return $data;
+	}
+
+	public function _getTipeBunga($filter = array(),$select='*')
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->select($select);
+		$data = $this->db->get('t_bunga');
+		return $data;
+	}
+
+	public function _getInfoPerusahaan($filter = array(),$select='*')
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->select($select);
+		$data = $this->db->get('m_perusahaan');
 		return $data;
 	}
 

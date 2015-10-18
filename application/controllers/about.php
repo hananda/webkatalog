@@ -43,6 +43,15 @@ class About extends CI_Controller {
         $this->output->set_content_type('application/json')->set_output(json_encode($records));
 	}
 
+	public function view()
+	{
+		$data = array();
+		$data['kontak'] = $this->model_public->_getInfoPerusahaan();
+		$data['perusahaan'] = $this->model_public->_getInfoPerusahaan()->row()->m_perusahaan_label_web;
+		$data['desc'] = $this->model_about->_getDesc();
+		$this->load->view('about', $data, FALSE);
+	}
+
 }
 
 /* End of file about.php */

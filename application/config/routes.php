@@ -40,6 +40,10 @@
 
 $route['default_controller'] = "dashboard";
 $route['detail/(:any)'] = "dashboard/detail/$1";
+$route['changepassword'] = "login/changepasswd";
+$route['tentangkami'] = "about/view";
+$route['produkkami'] = "produk/view";
+$route['produkkami/(:any)'] = "produk/view/$1";
 $route['404_override'] = '';
 
 

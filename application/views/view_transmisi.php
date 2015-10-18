@@ -1,12 +1,12 @@
-<link href="<?php echo base_url(); ?>assets/css/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-<script src="<?php echo base_url(); ?>assets/js/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url(); ?>assets/js/bootstrapPager.js" type="text/javascript"></script>
+<link href="<?php echo base_url(); ?>assets/css/datatables/jquery.dataTables.min.css" rel="stylesheet" transmisi="text/css" />
+<script src="<?php echo base_url(); ?>assets/js/datatables/jquery.dataTables.min.js" transmisi="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/bootstrapPager.js" transmisi="text/javascript"></script>
 <div class="page-title">
     <div class="title_left">
         <h3>
-            Info
+            Master
             <small>
-                Perusahaan
+                transmisi
             </small>
         </h3>
     </div>
@@ -14,9 +14,9 @@
     <!-- <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input transmisi="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
+                    <button class="btn btn-default" transmisi="button">Go!</button>
                 </span>
             </div>
         </div>
@@ -29,7 +29,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Form Info Perusahaan</h2>
+                <h2>Form transmisi</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><!-- <i class="fa fa-wrench"></i> --></a>
@@ -42,48 +42,13 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <form class="form-horizontal form-label-left" data-parsley-validate="" id="formkategori" novalidate="">
-                    <input type="hidden" name="idinfoperusahaan" id="idinfoperusahaan" />
+                <form class="form-horizontal form-label-left" data-parsley-validate="" id="formtransmisi" novalidate="">
+                    <input type="hidden" name="idtransmisi" id="idtransmisi" />
                     <div class="form-group">
-                        <label for="namaperusahaan" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Perusahaan
+                        <label for="namatransmisi" class="control-label col-md-3 col-sm-3 col-xs-12">Nama transmisi
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" name="namaperusahaan" id="namaperusahaan"><ul class="parsley-errors-list"></ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="alamatperusahaan" class="control-label col-md-3 col-sm-3 col-xs-12">Alamat Perusahaan
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" name="alamatperusahaan" id="alamatperusahaan"><ul class="parsley-errors-list"></ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="emailperusahaan" class="control-label col-md-3 col-sm-3 col-xs-12">Email Perusahaan
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="email" class="form-control col-md-7 col-xs-12" name="emailperusahaan" id="emailperusahaan"><ul class="parsley-errors-list"></ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="telpperusahaan" class="control-label col-md-3 col-sm-3 col-xs-12">Telpon Perusahaan
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" name="telpperusahaan" id="telpperusahaan"><ul class="parsley-errors-list"></ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="faxperusahaan" class="control-label col-md-3 col-sm-3 col-xs-12">Fax Perusahaan
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" name="faxperusahaan" id="faxperusahaan"><ul class="parsley-errors-list"></ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="labelweb" class="control-label col-md-3 col-sm-3 col-xs-12">Label web
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" class="form-control col-md-7 col-xs-12" name="labelweb" id="labelweb"><ul class="parsley-errors-list"></ul>
+                            <input type="text" class="form-control col-md-7 col-xs-12" required="required" name="namatransmisi" id="namatransmisi" data-parsley-id="5637"><ul class="parsley-errors-list" id="parsley-id-5637"></ul>
                         </div>
                     </div>
                     
@@ -109,32 +74,27 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Tabel Info</h2>
+                <h2>Tabel transmisi</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><!-- <i class="fa fa-wrench"></i> --></a>
                     </li>
-                    <!-- <li><a id="btnadd"><i class="fa fa-plus"></i></a>
-                    </li> -->
+                    <li><a id="btnadd"><i class="fa fa-plus"></i></a>
+                    </li>
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <table id="tabelinfo" class="table table-striped responsive-utilities jambo_table">
+                <table id="tabeltransmisi" class="table table-striped responsive-utilities jambo_table">
                     <thead>
                         <tr class="headings">
                             <th></th>
                             <th>
                                 No
                             </th>
-                            <th>Nama Perusahaan </th>
-                            <th>Alamat Perusahaan </th>
-                            <th>Label web </th>
-                            <th>Email Perusahaan </th>
-                            <th>Telp Perusahaan </th>
-                            <th>Fax Perusahaan </th>
+                            <th>Nama transmisi </th>
                             <th class=" no-link last"><span class="nobr">Action</span>
                             </th>
                         </tr>
@@ -148,17 +108,17 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
+<script transmisi="text/javascript">
     $(document).ready(function () {
         var jendela = false;
         $("#formcollapse").click();
 
-        $("#formkategori").submit(function(e) {
+        $("#formtransmisi").submit(function(e) {
             e.preventDefault();
             var data = $(this).serialize();
 
             $.ajax({
-                url: '<?php echo base_url(); ?>info/index/update',
+                url: '<?php echo base_url(); ?>transmisi/index/update',
                 type: 'POST',
                 dataType: 'json',
                 data: data,
@@ -211,20 +171,15 @@
             };
         });
 
-        var table = $('#tabelinfo').DataTable({
+        var table = $('#tabeltransmisi').DataTable({
           // "order": [[ 4, "asc" ]],
           "columns": [
             {"visible" : false,"orderable":false },
             {"orderable":false },
             {"orderable":false },
-            {"orderable":false },
-            {"orderable":false },
-            {"visible" : false,"orderable":false },
-            {"visible" : false,"orderable":false },
-            {"visible" : false,"orderable":false },
             {"orderable":false}
           ],
-          pagingType: "bootstrapPager",
+          pagingtransmisi: "bootstrapPager",
           "sDom": "Rfrtlip",
           pagerSettings: {
               searchOnEnter: true,
@@ -233,7 +188,7 @@
           processing: true,
           serverSide: true,
           ajax: {
-            url: "<?php echo base_url(); ?>info/index/get",
+            url: "<?php echo base_url(); ?>transmisi/index/get",
             type: "POST",
             data: function (d) {
                 
@@ -257,7 +212,7 @@
                 var id = dataedit[0];
                 var aktif = $(this).data().aktif;
                 if (sure) {
-                    $.post("<?php echo base_url(); ?>info/index/delete", {'idinfoperusahaan': id,aktif:aktif}, function (response) {
+                    $.post("<?php echo base_url(); ?>transmisi/index/delete", {'idtransmisi': id,aktif:aktif}, function (response) {
                         if(response.status){
                             NotifikasiToast({
                                 type : 'success', // ini tipe notifikasi success,warning,info,error
@@ -283,13 +238,8 @@
                 var dataedit = table.row( parent ).data();
                 
 
-                $("#idinfoperusahaan").val(dataedit[0]);
-                $("#namaperusahaan").val(dataedit[2]);
-                $("#alamatperusahaan").val(dataedit[3]);
-                $("#emailperusahaan").val(dataedit[5]);
-                $("#telpperusahaan").val(dataedit[6]);
-                $("#faxperusahaan").val(dataedit[7]);
-                $("#labelweb").val(dataedit[4]);
+                $("#idtransmisi").val(dataedit[0]);
+                $("#namatransmisi").val(dataedit[2]);
                 if (!jendela) {
                     $("#formcollapse").click();
                     jendela = !jendela;
@@ -298,12 +248,8 @@
         }
 
         function clear () {
-            $("#idinfoperusahaan").val("");
-            $("#namaperusahaan").val("");
-            $("#alamatperusahaan").val("");
-            $("#emailperusahaan").val("");
-            $("#telpperusahaan").val("");
-            $("#faxperusahaan").val("");
+            $("#idtransmisi").val("");
+            $("#namatransmisi").val("");
         }
 
     });

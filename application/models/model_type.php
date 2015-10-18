@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Model_user extends CI_Model {
+class Model_type extends CI_Model {
 
 	public function _get()
 	{
@@ -18,10 +18,10 @@ class Model_user extends CI_Model {
         $order = $this->input->post('order');
 
 		$query = "SELECT *
-				FROM user WHERE user_aktif = 'Y'";
+				FROM m_type";
 		if($search['value'] != ""){
             $query .=preg_match("/WHERE/i",$query)? " AND ":" WHERE ";
-			$query .= "(user_nama = '". $search['value'] ."')";
+			$query .= "(m_type_nama = '". $search['value'] ."')";
 		}
         // OR PROGRAM_TAHUN LIKE '%". strtolower($search) ."%'
 		// var_dump($order);
@@ -39,11 +39,15 @@ class Model_user extends CI_Model {
         $result = array();
         foreach ($data as $d) {
             $r = array();
-			$r[0] = $d['user_id'];
+            $icondelete = '<a class="btndelete" data-aktif="Y" style="cursor:pointer;" title="Klik untuk menonaktifkan"><i class="fa fa-check"></i></a>';
+			$r[0] = $d['m_type_id'];
 			$r[1] = $i;
-			$r[2] = $d['user_nama'];
+			$r[2] = $d['m_type_nama'];
+            if ($d['m_type_active'] == 'T') {
+                $icondelete = '<a class="btndelete" data-aktif="T" style="cursor:pointer;" title="Klik untuk mengaktifkan"><i class="fa fa-remove"></i></a>';
+            }
 			$r[3] = '<a class="btnedit" style="cursor:pointer;" title="Edit"><i class="fa fa-edit"></i></a>
-			<a class="btndelete" style="cursor:pointer;" title="Hapus"><i class="fa fa-trash"></i></a>';
+			'.$icondelete;
             array_push($result, $r);
             $i++;
         }
@@ -57,24 +61,25 @@ class Model_user extends CI_Model {
 
     public function _update()
     {
-        $id = $this->input->post('iduser');
-        $nama = $this->input->post('namauser');
-        $password = $this->input->post('password');
-        $filter = array('user_id'=>$id);
-        $data = array('user_nama'=>$nama,'user_pass'=>md5($password));
+        $id = $this->input->post('idtype');
+        $nama = $this->input->post('namatype');
+        $filter = array('m_type_id'=>$id);
+        $data = array('m_type_nama'=>$nama);
         
         if ($id) {
+            $desc = 'diubah';
             $this->db->where($filter);
-            $this->db->update('user',$data);
+            $this->model_public->update('m_type',$data);
         }else{
-            $this->db->insert('user', $data);
+            $desc = 'ditambah';
+            $this->model_public->insert('m_type', $data);
         }
 
         if ($this->db->affected_rows()>0) {
-            $result['message'] = 'Data berhasil diubah';
+            $result['message'] = 'Data berhasil '.$desc;
             $result['status'] = true;
         }else{
-            $result['message'] = 'Data gagal diubah';
+            $result['message'] = 'Data gagal '.$desc;
             $result['status'] = false;
         }
         return $result;
@@ -82,54 +87,26 @@ class Model_user extends CI_Model {
 
     public function _delete()
     {
-        $id = $this->input->post('iduser');
-        $filter = array('user_id'=>$id);
-        $data = array('user_aktif'=>'T');
+        $id = $this->input->post('idtype');
+        $aktif = $this->input->post('aktif');
+        $aktif = ($aktif == 'Y') ? 'T' : 'Y';
+        $filter = array('m_type_id'=>$id);
+        $data = array('m_type_active'=>$aktif);
         
         $this->db->where($filter);
-        $this->db->update('user',$data);
+        $this->model_public->update('m_type',$data);
 
         if ($this->db->affected_rows()>0) {
-            $result['message'] = 'Data berhasil dihapus';
+            $result['message'] = 'Data berhasil di '.(($aktif == 'Y') ? 'aktifkan' : 'non aktifkan');
             $result['status'] = true;
         }else{
-            $result['message'] = 'Data gagal dihapus';
+            $result['message'] = 'Data gagal di '.(($aktif == 'Y') ? 'aktifkan' : 'non aktifkan');
             $result['status'] = false;
         }
-        return $result;
-    }
-
-    public function _savepass()
-    {
-        $iduser = $this->input->post('iduser');
-        $passlama = $this->input->post('passlama');
-        $passbaru = $this->input->post('passbaru');
-
-        $this->db->where('s_user_id', $iduser);
-        $this->db->where('s_user_pass', md5($passlama));
-
-        $cek = $this->db->get('s_user');
-        if ($cek->num_rows > 0) {
-            $data['s_user_pass'] = md5($passbaru);
-            $this->db->where('s_user_id', $iduser);
-            $this->model_public->update('s_user',$data);
-
-            if ($this->db->affected_rows()>0) {
-                $result['message'] = 'Password berhasil diubah';
-                $result['status'] = true;
-            }else{
-                $result['message'] = 'Password Gagal diubah';
-                $result['status'] = false;
-            }
-        }else{
-            $result['message'] = 'Password lama tidak cocok';
-            $result['status'] = false;
-        }
-
         return $result;
     }
 
 }
 
-/* End of file model_user.php */
-/* Location: ./application/models/model_user.php */
+/* End of file model_m_type.php */
+/* Location: ./application/models/model_m_type.php */

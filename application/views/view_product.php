@@ -165,7 +165,7 @@
                     </li>
                     <li>
                     </li>
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    <li><a class="collapse-link" id="formcollapse3"></a>
                     </li>
                 </ul>
                 <div class="clearfix"></div>
@@ -213,7 +213,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <button class="btn btn-success" type="submit">Simpan</button>
-                            <button class="btn btn-primary" id="btnbatal">Batal</button>
+                            <button class="btn btn-primary" id="btnclearharga">Clear</button>
                         </div>
                     </div>
 
@@ -221,6 +221,8 @@
                 <table id="tabelharga" class="table table-striped responsive-utilities jambo_table">
                     <thead>
                         <tr class="headings">
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th>
                                 No
@@ -237,6 +239,7 @@
                     </tbody>
 
                 </table>
+                <button class="btn btn-success" id="btntutupharga">Tutup</button>
             </div>
         </div>
     </div>
@@ -264,6 +267,7 @@
                     <thead>
                         <tr class="headings">
                             <th></th>
+                            <th></th>
                             <th>
                                 No
                             </th>
@@ -289,8 +293,10 @@
         var idproduk = 0;
         var jendela = false;
         var jendela2 = false;
+        var jendela3 = false;
         $("#formcollapse").click();
         $("#formcollapse2").click();
+        $("#formcollapse3").click();
         $('.progress-bar').hide();
 
         $("#formproduk").submit(function(e) {
@@ -342,11 +348,24 @@
             };
         });
 
+        $("#btnclearharga").click(function(e) {
+            e.preventDefault();
+            clear1();
+        });
+
         $("#btnbatal2").click(function(e) {
             e.preventDefault();
             if (jendela2) {
                 $("#formcollapse2").click();
                 jendela2 = !jendela2;
+            };
+        });
+
+        $("#btntutupharga").click(function(e) {
+            e.preventDefault();
+            if (jendela3) {
+                $("#formcollapse3").click();
+                jendela3 = !jendela3;
             };
         });
 
@@ -362,6 +381,7 @@
         var table = $('#tabelproduk').DataTable({
           // "order": [[ 4, "asc" ]],
           "columns": [
+            {"visible" : false,"orderable":false },
             {"visible" : false,"orderable":false },
             {"orderable":false },
             {"orderable":false },
@@ -415,6 +435,8 @@
         var tableharga = $('#tabelharga').DataTable({
           // "order": [[ 4, "asc" ]],
           "columns": [
+            {"visible" : false,"orderable":false },
+            {"visible" : false,"orderable":false },
             {"visible" : false,"orderable":false },
             {"orderable":false },
             {"orderable":false },
@@ -494,7 +516,8 @@
                 
 
                 $("#idproduk").val(dataedit[0]);
-                $("#namaproduk").val(dataedit[2]);
+                $("#kategori").val(dataedit[1]);
+                $("#namaproduk").val(dataedit[3]);
                 if (!jendela) {
                     $("#formcollapse").click();
                     jendela = !jendela;
@@ -512,10 +535,22 @@
                     jendela2 = !jendela2;
                 };
             });
+
+            $(".btnharga").click(function(e) {
+                e.preventDefault();
+                var id = $(this).data().id;
+                idproduk = id;
+                $("#idproduk3").val(id);
+                tableharga.ajax.reload();
+                if (!jendela3) {
+                    $("#formcollapse3").click();
+                    jendela3 = !jendela3;
+                };
+            });
         }
 
         function initEvent2() {
-            $(".btndelete").click(function (e) {
+            $(".btndeletefoto").click(function (e) {
                 var sure = confirm("Apakah Anda yakin?");
                 e.preventDefault();
                 var parent = $(this).parent().parent();
@@ -572,21 +607,21 @@
         }
 
         function initEvent3() {
-            $(".btndelete").click(function (e) {
+            $(".btndeleteharga").click(function (e) {
                 var sure = confirm("Apakah Anda yakin?");
                 e.preventDefault();
                 var parent = $(this).parent().parent();
-                var dataedit = tablefoto.row( parent ).data();
+                var dataedit = tableharga.row( parent ).data();
                 var id = dataedit[0];
                 if (sure) {
-                    $.post("<?php echo base_url(); ?>produk/index/deletefoto", {'idfoto': id,'idproduk':idproduk}, function (response) {
+                    $.post("<?php echo base_url(); ?>produk/index/deleteharga", {'idharga': id}, function (response) {
                         if(response.status){
                             NotifikasiToast({
                                 type : 'success', // ini tipe notifikasi success,warning,info,error
                                 msg : response.message, //ini isi pesan
                                 title : '', //ini judul pesan
                             });
-                            tablefoto.ajax.reload();
+                            tableharga.ajax.reload();
                         }
                         else{
                             NotifikasiToast({
@@ -599,22 +634,22 @@
                 };
             });
 
-            $(".btnaktif").click(function (e) {
+            $(".btnaktifharga").click(function (e) {
                 var sure = confirm("Apakah Anda yakin?");
                 e.preventDefault();
                 var parent = $(this).parent().parent();
-                var dataedit = tablefoto.row( parent ).data();
+                var dataedit = tableharga.row( parent ).data();
                 var id = dataedit[0];
                 var aktif = $(this).data().aktif;
                 if (sure) {
-                    $.post("<?php echo base_url(); ?>produk/index/setmainfoto", {'idfoto': id,aktif:aktif}, function (response) {
+                    $.post("<?php echo base_url(); ?>produk/index/setmainharga", {'idharga': id,aktif:aktif}, function (response) {
                         if(response.status){
                             NotifikasiToast({
                                 type : 'success', // ini tipe notifikasi success,warning,info,error
                                 msg : response.message, //ini isi pesan
                                 title : '', //ini judul pesan
                             });
-                            tablefoto.ajax.reload();
+                            tableharga.ajax.reload();
                         }
                         else{
                             NotifikasiToast({
@@ -625,6 +660,18 @@
                         }
                     });
                 };
+            });
+
+            $(".btneditharga").click(function (e) {
+                e.preventDefault();
+                var parent = $(this).parent().parent();
+                var dataedit = tableharga.row( parent ).data();
+                
+
+                $("#idharga").val(dataedit[0]);
+                $("#tipe").val(dataedit[1]);
+                $("#transmisi").val(dataedit[2]);
+                $("#harga").val(dataedit[6]);
             });
         }
 
@@ -636,6 +683,13 @@
             $("#price2").val("");
             $("#desc").val("");
             $("#disc").val("");
+        }
+
+        function clear1 () {
+            $("#idharga").val("");
+            $("#tipe").val("");
+            $("#transmisi").val("");
+            $("#harga").val("");
         }
 
         $("#formupload").submit(function(e) {
@@ -712,11 +766,12 @@
                         msg : response.message, //ini isi pesan
                         title : '', //ini judul pesan
                     });
+                    $("#btnclearharga").click();
                     tableharga.ajax.reload();
                 }else{
                      NotifikasiToast({
                         type : 'error', // ini tipe notifikasi success,warning,info,error
-                        msg : response.message.error, //ini isi pesan
+                        msg : response.message, //ini isi pesan
                         title : '', //ini judul pesan
                     });
                 }

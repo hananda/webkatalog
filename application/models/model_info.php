@@ -43,14 +43,15 @@ class Model_info extends CI_Model {
 			$r[0] = $d['m_perusahaan_id'];
 			$r[1] = $i;
 			$r[2] = $d['m_perusahaan_nama'];
-			$r[3] = $d['m_perusahaan_alamat'];
-            $r[4] = $d['m_perusahaan_email'];
-            $r[5] = $d['m_perusahaan_phone'];
-			$r[6] = $d['m_perusahaan_fax'];
+            $r[3] = $d['m_perusahaan_alamat'];
+			$r[4] = $d['m_perusahaan_label_web'];
+            $r[5] = $d['m_perusahaan_email'];
+            $r[6] = $d['m_perusahaan_phone'];
+			$r[7] = $d['m_perusahaan_fax'];
 			if ($d['m_perusahaan_active'] == 'T') {
 				$icondelete = '<a class="btndelete" data-aktif="T" style="cursor:pointer;" title="Klik untuk mengaktifkan"><i class="fa fa-remove"></i></a>';
 			}
-			$r[7] = '<a class="btnedit" style="cursor:pointer;" title="Edit"><i class="fa fa-edit"></i></a>
+			$r[8] = '<a class="btnedit" style="cursor:pointer;" title="Edit"><i class="fa fa-edit"></i></a>
 			'.$icondelete;
             array_push($result, $r);
             $i++;
@@ -71,6 +72,7 @@ class Model_info extends CI_Model {
         $email = $this->input->post('emailperusahaan');
         $telp = $this->input->post('telpperusahaan');
         $fax = $this->input->post('faxperusahaan');
+        $labelweb = $this->input->post('labelweb');
         $filter = array('m_perusahaan_id'=>$id);
         $data = array(
         	'm_perusahaan_nama'=>$nama,
@@ -78,6 +80,7 @@ class Model_info extends CI_Model {
         	'm_perusahaan_email'=>$email,
         	'm_perusahaan_phone'=>$telp,
         	'm_perusahaan_fax'=>$fax,
+            'm_perusahaan_label_web'=>$labelweb
         );
 
         $jumlah = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM m_perusahaan WHERE m_perusahaan_active = 'Y'")->row()->JUMLAH;

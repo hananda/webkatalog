@@ -67,7 +67,7 @@
                             <div class="clearfix"></div>
                             <!-- <br /> -->
                             <div>
-                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Web Mobil</h1>
+                                <h1><i class="fa fa-building-o" style="font-size: 26px;"></i> <?php echo $perusahaan ?></h1>
 
                                 <p>©2015 All Rights Reserved</p>
                             </div>

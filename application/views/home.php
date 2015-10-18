@@ -1,0 +1,1 @@
+<h1>SELAMAT DATANG DI ADMIN -  <?php echo $this->session->userdata('label_app'); ?><h1>

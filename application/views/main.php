@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin | Web Mobil</title>
+    <title>Admin | <?php echo $this->session->userdata('label_app'); ?></title>
 
     <!-- Bootstrap core CSS -->
 
@@ -52,7 +52,7 @@
                 <div class="left_col scroll-view">
 
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title" style="font-size:18px !important"><i class="fa fa-paw"></i> <span>Admin - Web Mobil</span></a>
+                        <a href="index.html" class="site_title" style="font-size:18px !important"><i class="fa fa-building-o"></i> <span>Admin -  <?php echo $this->session->userdata('label_app'); ?></span></a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -86,9 +86,11 @@
                                         </li>
                                         <li><a href="<?php echo base_url() ?>master/product">Produk</a>
                                         </li>
+                                        <li><a href="<?php echo base_url() ?>master/bunga">Bunga</a>
+                                        </li>
                                     </ul>
                                 </li>   
-                                <li><a href="<?php echo base_url() ?>info"><i class="fa fa-bank"></i> Info Perusahaan </a>
+                                <li><a href="<?php echo base_url() ?>info"><i class="fa fa-building-o"></i> Info Perusahaan </a>
                                 <li><a href="<?php echo base_url() ?>about"><i class="fa fa-info-circle"></i> Tentang Perusahaan </a>
                             </ul>
                         </div>
@@ -126,7 +128,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?php echo base_url(); ?>assets/images/img.jpg" alt=""><?php echo $this->session->userdata('user_nama'); ?>
+                                    <img src="<?php echo base_url(); ?>assets/images/user.png" alt=""><?php echo $this->session->userdata('user_nama'); ?>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -141,6 +143,8 @@
                                     <li>
                                         <a href="javascript:;">Help</a>
                                     </li> -->
+                                    <li><a href="<?php echo base_url() ?>changepassword"><i class="fa fa-key pull-right"></i> Ganti Password</a>
+                                    </li>
                                     <li><a href="<?php echo base_url() ?>login/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
@@ -235,7 +239,7 @@
                 <footer>
                     <div class="">
                         <p class="pull-right"><a></a>
-                            <span class="lead"> <i class="fa fa-paw"></i> Web Mobil</span>
+                            <span class="lead"> <i class="fa fa-building-o"></i> <?php echo $this->session->userdata('label_app'); ?></span>
                         </p>
                     </div>
                     <div class="clearfix"></div>
