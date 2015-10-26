@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50544
+Source Server Version : 50624
 Source Host           : localhost:3306
 Source Database       : webmobil
 
 Target Server Type    : MYSQL
-Target Server Version : 50544
+Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-10-20 19:13:03
+Date: 2015-10-26 16:07:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,6 +34,29 @@ CREATE TABLE `m_about` (
 -- Records of m_about
 -- ----------------------------
 INSERT INTO `m_about` VALUES ('1', '<p>test</p>\n\n<p>&nbsp;</p>\n\n<p>sdfasdf</p>\n\n<p><strong>a</strong></p>\n\n<p><strong>a</strong></p>\n\n<p><strong>asdfasfasdfasdfd</strong></p>\n\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/webmobil/Pictures/asdf/5.jpg\" style=\"height:480px; width:480px\" /></p>\n', 'Y', null, null, '2015-10-10 10:10:16', '1');
+
+-- ----------------------------
+-- Table structure for m_article
+-- ----------------------------
+DROP TABLE IF EXISTS `m_article`;
+CREATE TABLE `m_article` (
+  `m_article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `m_article_title` varchar(255) DEFAULT NULL,
+  `m_article_desc` mediumtext,
+  `m_article_created_date` timestamp NULL DEFAULT NULL,
+  `m_article_created_by` int(11) DEFAULT NULL,
+  `m_article_updated_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `m_article_updated_by` int(11) DEFAULT NULL,
+  `m_article_active` enum('T','Y') DEFAULT 'Y',
+  PRIMARY KEY (`m_article_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of m_article
+-- ----------------------------
+INSERT INTO `m_article` VALUES ('1', 'test12121', '<p><img alt=\"\" src=\"/sanihonda/Pictures/asdf/5.jpg\" style=\"height:480px; width:480px\" />testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p><strong><em>asdfasdfasdf</em></strong></p>\n', '2015-10-24 12:36:01', '1', '2015-10-25 20:09:05', '1', 'Y');
+INSERT INTO `m_article` VALUES ('2', 'test', '<p>testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p><strong><em>asdfasdf</em></strong></p>\n', '2015-10-25 20:00:11', '1', '2015-10-25 20:00:11', '1', 'Y');
+INSERT INTO `m_article` VALUES ('3', 'test', '<p>testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdfasdf</p>\n', '2015-10-25 20:01:22', '1', '2015-10-25 20:06:10', '1', 'T');
 
 -- ----------------------------
 -- Table structure for m_categories
@@ -255,10 +278,10 @@ INSERT INTO `t_price` VALUES ('9', '1', '1', '1', '400000', '2015-10-14 21:21:10
 -- View structure for v_price
 -- ----------------------------
 DROP VIEW IF EXISTS `v_price`;
-CREATE VIEW `v_price` AS select distinct `t_price`.`t_price_id` AS `t_price_id`,`t_price`.`m_product_id` AS `m_product_id`,`t_price`.`m_type_id` AS `m_type_id`,`t_price`.`m_transmisi_id` AS `m_transmisi_id`,`t_price`.`t_price_nominal` AS `t_price_nominal`,`t_price`.`t_price_created_date` AS `t_price_created_date`,`t_price`.`t_price_created_by` AS `t_price_created_by`,`t_price`.`t_price_updated_date` AS `t_price_updated_date`,`t_price`.`t_price_updated_by` AS `t_price_updated_by`,`t_price`.`t_price_view` AS `t_price_view`,`m_type`.`m_type_nama` AS `m_type_nama`,`m_transmisi`.`m_transmisi_nama` AS `m_transmisi_nama` from ((`t_price` left join `m_type` on((`m_type`.`m_type_id` = `t_price`.`m_type_id`))) left join `m_transmisi` on((`m_transmisi`.`m_transmisi_id` = `t_price`.`m_transmisi_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_price` AS select distinct `t_price`.`t_price_id` AS `t_price_id`,`t_price`.`m_product_id` AS `m_product_id`,`t_price`.`m_type_id` AS `m_type_id`,`t_price`.`m_transmisi_id` AS `m_transmisi_id`,`t_price`.`t_price_nominal` AS `t_price_nominal`,`t_price`.`t_price_created_date` AS `t_price_created_date`,`t_price`.`t_price_created_by` AS `t_price_created_by`,`t_price`.`t_price_updated_date` AS `t_price_updated_date`,`t_price`.`t_price_updated_by` AS `t_price_updated_by`,`t_price`.`t_price_view` AS `t_price_view`,`m_type`.`m_type_nama` AS `m_type_nama`,`m_transmisi`.`m_transmisi_nama` AS `m_transmisi_nama` from ((`t_price` left join `m_type` on((`m_type`.`m_type_id` = `t_price`.`m_type_id`))) left join `m_transmisi` on((`m_transmisi`.`m_transmisi_id` = `t_price`.`m_transmisi_id`))) ;
 
 -- ----------------------------
 -- View structure for v_product
 -- ----------------------------
 DROP VIEW IF EXISTS `v_product`;
-CREATE VIEW `v_product` AS select `m_product`.`m_product_id` AS `m_product_id`,`m_product`.`m_product_nama` AS `m_product_nama`,`m_product`.`m_product_desc` AS `m_product_desc`,`m_product`.`m_categories_id` AS `m_categories_id`,`m_product`.`m_product_active` AS `m_product_active`,`m_product`.`m_product_created_date` AS `m_product_created_date`,`m_product`.`m_product_created_by` AS `m_product_created_by`,`m_product`.`m_product_updated_date` AS `m_product_updated_date`,`m_product`.`m_product_updated_by` AS `m_product_updated_by`,`t_photoproduct`.`t_photoproduct_nama` AS `t_photoproduct_nama`,`t_price`.`t_price_nominal` AS `t_price_nominal`,`m_categories`.`m_categories_nama` AS `m_categories_nama` from (((`m_product` left join `t_photoproduct` on(((`m_product`.`m_product_id` = `t_photoproduct`.`m_product_id`) and (`t_photoproduct`.`t_photoproduct_main` = 1)))) left join `t_price` on(((`m_product`.`m_product_id` = `t_price`.`m_product_id`) and (`t_price`.`t_price_view` = 1)))) left join `m_categories` on((`m_categories`.`m_categories_id` = `m_product`.`m_categories_id`))) where (`m_product`.`m_product_active` = 'Y') order by `m_product`.`m_product_updated_date` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_product` AS select `m_product`.`m_product_id` AS `m_product_id`,`m_product`.`m_product_nama` AS `m_product_nama`,`m_product`.`m_product_desc` AS `m_product_desc`,`m_product`.`m_categories_id` AS `m_categories_id`,`m_product`.`m_product_active` AS `m_product_active`,`m_product`.`m_product_created_date` AS `m_product_created_date`,`m_product`.`m_product_created_by` AS `m_product_created_by`,`m_product`.`m_product_updated_date` AS `m_product_updated_date`,`m_product`.`m_product_updated_by` AS `m_product_updated_by`,`t_photoproduct`.`t_photoproduct_nama` AS `t_photoproduct_nama`,`t_price`.`t_price_nominal` AS `t_price_nominal`,`m_categories`.`m_categories_nama` AS `m_categories_nama` from (((`m_product` left join `t_photoproduct` on(((`m_product`.`m_product_id` = `t_photoproduct`.`m_product_id`) and (`t_photoproduct`.`t_photoproduct_main` = 1)))) left join `t_price` on(((`m_product`.`m_product_id` = `t_price`.`m_product_id`) and (`t_price`.`t_price_view` = 1)))) left join `m_categories` on((`m_categories`.`m_categories_id` = `m_product`.`m_categories_id`))) where (`m_product`.`m_product_active` = 'Y') order by `m_product`.`m_product_updated_date` desc ;
