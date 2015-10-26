@@ -77,6 +77,7 @@
                             <ul class="nav side-menu">
                                 <li><a href="<?php echo base_url() ?>home"><i class="fa fa-home"></i> Home </a>
                                 </li>
+                                <li><a href="<?php echo base_url() ?>article"><i class="fa fa-building-o"></i> Artikel </a>
                                 <li><a><i class="fa fa-desktop"></i> Master <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu" style="display: none">
                                         <li><a href="<?php echo base_url() ?>master/kategori">Kategori</a>

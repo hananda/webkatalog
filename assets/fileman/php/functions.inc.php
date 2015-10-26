@@ -93,7 +93,7 @@ function getFilesPath(){
   $ret = (isset($_SESSION[SESSION_PATH_KEY]) && $_SESSION[SESSION_PATH_KEY] != ''?$_SESSION[SESSION_PATH_KEY]:FILES_ROOT);
   if(!$ret){
     if ($_SESSION['user_id']) {
-      $ret = RoxyFile::FixPath('/webmobil/Pictures');
+      $ret = RoxyFile::FixPath('/sanihonda/Pictures');
     }else{
       $ret = RoxyFile::FixPath('/Pictures');
     }

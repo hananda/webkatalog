@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data = array();
+		$data['article'] = $this->model_public->_getNewstArticle();
 		$data['perusahaan'] = $this->model_public->_getInfoPerusahaan()->row()->m_perusahaan_label_web;
 		$data['product'] = $this->model_produk->_getMobilNewest();
 		$this->load->view('dashboard', $data, FALSE);

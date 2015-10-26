@@ -7,7 +7,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo $perusahaan ?></title>
+<title><?php echo $perusahaan;
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?></title>
 <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo base_url() ?>assets/css/docs.min.css" rel="stylesheet">
 <!-- Custom Theme files -->
@@ -52,9 +53,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              <!---->         
              <div class="top-nav">
                 <ul class="memenu skyblue">
-                    <li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="grid"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
-                    <li class="grid"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
+                    <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a>
+                    <li class="<?php echo ($actual_link == base_url()."produkkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
+                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
                     </li>
                     <!-- <li class="grid"><a href="contact.html">Kontak Kami</a></li>                     -->
                 </ul>               

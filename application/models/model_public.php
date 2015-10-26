@@ -58,6 +58,23 @@ class Model_public extends CI_Model {
 		return $data;
 	}
 
+	public function _getArticle($filter = array(),$select='*',$limit=0,$offset=0)
+	{
+		if (count($filter) > 0) {
+			foreach ($filter as $field => $value) {
+				$this->db->where($field, $value);
+			}
+		}
+		$this->db->where('m_article_active', 'Y');
+		$this->db->select($select);
+		if ($limit && $offset) {
+			$data = $this->db->get('m_article',$limit,$offset);
+		}else{
+			$data = $this->db->get('m_article');
+		}
+		return $data;
+	}
+
 	public function _getTransmisi($filter = array(),$select='*')
 	{
 		if (count($filter) > 0) {
@@ -98,6 +115,32 @@ class Model_public extends CI_Model {
 		}
 		$this->db->select($select);
 		$data = $this->db->get('m_perusahaan');
+		return $data;
+	}
+
+	public function _getNewstArticle()
+	{
+		$this->db->where('m_article_active', 'Y');
+		$this->db->order_by('m_article_updated_date', 'desc');
+		$this->db->select('*');
+		$data = $this->db->get('m_article',5,0);
+		if ($data->num_rows > 0) {
+			$data = $data->result_array();
+			for ($i=0; $i < count($data); $i++) { 
+				preg_match_all('/<img[^>]+>/i',$data[$i]["m_article_desc"], $img);
+				if (@$img[0][0]) {
+					$doc = new DOMDocument();
+					$doc->loadHTML(@$img[0][0]);
+					$xpath = new DOMXPath($doc);
+					$src = $xpath->evaluate("string(//img/@src)"); # "/images/image.jpg"
+				}else{
+					$src = "";
+				}
+				$data[$i]["m_article_desc"] = $src;
+			}
+		}else{
+			$data = array();
+		}
 		return $data;
 	}
 

@@ -8,6 +8,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
 <title><?php echo $perusahaan ?></title>
+<style type="text/css">
+    <?php 
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        if (count($article) > 0) {
+            for ($i=0; $i < count($article); $i++) { 
+                $img = ($article[$i]["m_article_desc"]) ? $article[$i]["m_article_desc"] : base_url()."assets/images/no-image.jpg" ;
+    ?>
+    .banner<?php echo $article[$i]["m_article_id"]; ?>{
+        background:url(<?php echo $img; ?>) no-repeat 0px 0px;
+        background-size:cover;
+        min-height:585px;
+    }
+    <?php
+            }
+        }
+    ?>
+   /* .banner1{
+        background:url(<?php echo base_url(); ?>assets/images/bnr.jpg) no-repeat 0px 0px;
+        background-size:cover;
+        min-height:585px;
+    }
+    .banner2{
+        background:url(<?php echo base_url(); ?>assets/images/bnr2.jpg) no-repeat 0px 0px;
+        background-size:cover;
+        min-height:585px;
+    }
+    .banner3{
+        background:url(<?php echo base_url(); ?>assets/images/bnr3.jpg) no-repeat 0px 0px;
+        background-size:cover;
+        min-height:585px;
+    }*/
+</style>
 <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="<?php echo base_url() ?>assets/css/docs.min.css" rel="stylesheet">
 <!-- Custom Theme files -->
@@ -52,9 +84,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
              <!---->         
              <div class="top-nav">
                 <ul class="memenu skyblue">
-                    <li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="grid"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
-                    <li class="grid"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
+                    <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a>
+                    <li class="<?php echo ($actual_link == base_url()."produkkam"i) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
+                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
                         <!-- <div class="mepanel">
                             <div class="row">
                                 <div class="col1 me-one">
@@ -119,30 +152,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="slider">
       <div class="callbacks_container">
          <ul class="rslides" id="slider">
+            <?php 
+                if (count($article) > 0) {
+                    for ($i=0; $i < count($article); $i++) { 
+            ?>
              <li>
-                 <div class="banner1">                
+                 <div class="banner<?php echo $article[$i]["m_article_id"]; ?>">                
                       <div class="banner-info">
-                      <h3>Morbi lacus hendrerit efficitur.</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+                      <a href="<?php echo base_url(); ?>artikel/view/<?php echo $article[$i]["m_article_id"] ?>"><h3><?php echo $article[$i]["m_article_title"]; ?></h3></a>
                       </div>
                  </div>
              </li>
-             <li>
-                 <div class="banner2">
-                     <div class="banner-info">
-                     <h3>Phasellus elementum tincidunt.</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                     </div>
-                 </div>
-             </li>
-             <li>
-                 <div class="banner3">
-                 <div class="banner-info">
-                 <h3>Maecenas interposuere volutpat.</h3>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                 </div>
-                 </div>
-             </li>
+            <?php
+                    }
+                }
+            ?>
           </ul>
       </div>
   </div>

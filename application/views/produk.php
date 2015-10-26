@@ -16,6 +16,7 @@
         return $data; //return the paging data
 
     }
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,17 +47,7 @@
 <body> 
 <!--header-->   
 <script src="<?php echo base_url() ?>assets/js/responsiveslides.min.js"></script>
-<script>  
-    $(function () {
-      $("#slider").responsiveSlides({
-        auto: true,
-        nav: true,
-        speed: 500,
-        namespace: "callbacks",
-        pager: false,
-      });
-    });
-  </script>
+
   
 <div class="header-top">
      <div class="header-bottom">            
@@ -66,9 +57,10 @@
              <!---->         
              <div class="top-nav">
                 <ul class="memenu skyblue">
-                    <li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="grid"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
-                    <li class="grid"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
+                    <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a>
+                    <li class="<?php echo ($actual_link == base_url()."produkkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
+                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
                     </li>
                     <!-- <li class="grid"><a href="contact.html">Kontak Kami</a></li>                     -->
                 </ul>               
@@ -78,38 +70,6 @@
              </div>
             <div class="clearfix"> </div>
 </div>
-<!----> 
-<div class="slider">
-      <div class="callbacks_container">
-         <ul class="rslides" id="slider">
-             <li>
-                 <div class="banner1">                
-                      <div class="banner-info">
-                      <h3>Morbi lacus hendrerit efficitur.</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                      </div>
-                 </div>
-             </li>
-             <li>
-                 <div class="banner2">
-                     <div class="banner-info">
-                     <h3>Phasellus elementum tincidunt.</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                     </div>
-                 </div>
-             </li>
-             <li>
-                 <div class="banner3">
-                 <div class="banner-info">
-                 <h3>Maecenas interposuere volutpat.</h3>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
-                 </div>
-                 </div>
-             </li>
-          </ul>
-      </div>
-  </div>
-<!---->
 <script src="<?php echo base_url() ?>assets/js/bootstrap.js"> </script>
 <style type="text/css">
     .container h3::before {

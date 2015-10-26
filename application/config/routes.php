@@ -44,7 +44,9 @@ $route['changepassword'] = "login/changepasswd";
 $route['tentangkami'] = "about/view";
 $route['produkkami'] = "produk/view";
 $route['produkkami/(:any)'] = "produk/view/$1";
+$route['artikel/view/(:any)'] = "article/view/$1";
 $route['404_override'] = '';
+$route['artikel'] = "article/artikel";
 
 
 /* End of file routes.php */
