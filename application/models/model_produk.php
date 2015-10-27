@@ -357,9 +357,10 @@ class Model_produk extends CI_Model {
 
     public function _setmainfoto()
     {
-        $jumlah = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM t_photoproduct WHERE t_photoproduct_main = 1")->row()->JUMLAH;
-        
         $id = $this->input->post('idfoto');
+        $idproduk = $this->input->post('idproduk');
+        $jumlah = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM t_photoproduct WHERE t_photoproduct_main = 1 AND m_product_id = ".$idproduk)->row()->JUMLAH;
+        
         $aktif = $this->input->post('aktif');
 
         if (($jumlah > 0) && $aktif == '0') {
@@ -387,7 +388,8 @@ class Model_produk extends CI_Model {
 
     public function _setmainharga()
     {
-        $jumlah = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM t_price WHERE t_price_view = 1")->row()->JUMLAH;
+        $idproduk = $this->input->post('idproduk');
+        $jumlah = $this->db->query("SELECT COUNT(*) AS JUMLAH FROM t_price WHERE t_price_view = 1 AND m_product_id = ".$idproduk)->row()->JUMLAH;
         
         $id = $this->input->post('idharga');
         $aktif = $this->input->post('aktif');

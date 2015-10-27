@@ -32,6 +32,7 @@
     var cicilan = [];
     var dp = '<?php echo $dp; ?>';
     <?php 
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if ($cicilan->num_rows > 0) {
             foreach ($cicilan->result() as $r) {
     ?>
@@ -99,9 +100,10 @@
              <!---->         
              <div class="top-nav">
                 <ul class="memenu skyblue">
-                    <li class="active"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="grid"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
-                    <li class="grid"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
+                    <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."produkkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a></li>
                     </li>
                     <!-- <li class="grid"><a href="contact.html">Kontak Kami</a></li>                     -->
                 </ul>               

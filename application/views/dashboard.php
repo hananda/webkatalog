@@ -86,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <ul class="memenu skyblue">
                     <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
                     <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a>
-                    <li class="<?php echo ($actual_link == base_url()."produkkam"i) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
+                    <li class="<?php echo ($actual_link == base_url()."produkkam") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
                     <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
                         <!-- <div class="mepanel">
                             <div class="row">

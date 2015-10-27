@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2015-10-26 16:07:51
+Date: 2015-10-26 21:55:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `m_about` (
 -- ----------------------------
 -- Records of m_about
 -- ----------------------------
-INSERT INTO `m_about` VALUES ('1', '<p>test</p>\n\n<p>&nbsp;</p>\n\n<p>sdfasdf</p>\n\n<p><strong>a</strong></p>\n\n<p><strong>a</strong></p>\n\n<p><strong>asdfasfasdfasdfd</strong></p>\n\n<p style=\"text-align: center;\"><img alt=\"\" src=\"/webmobil/Pictures/asdf/5.jpg\" style=\"height:480px; width:480px\" /></p>\n', 'Y', null, null, '2015-10-10 10:10:16', '1');
+INSERT INTO `m_about` VALUES ('1', '<p>sani honda adalah sales terbaik tahun ini</p>\n', 'Y', null, null, '2015-10-26 21:40:05', '1');
 
 -- ----------------------------
 -- Table structure for m_article
@@ -49,14 +49,15 @@ CREATE TABLE `m_article` (
   `m_article_updated_by` int(11) DEFAULT NULL,
   `m_article_active` enum('T','Y') DEFAULT 'Y',
   PRIMARY KEY (`m_article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of m_article
 -- ----------------------------
-INSERT INTO `m_article` VALUES ('1', 'test12121', '<p><img alt=\"\" src=\"/sanihonda/Pictures/asdf/5.jpg\" style=\"height:480px; width:480px\" />testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p><strong><em>asdfasdfasdf</em></strong></p>\n', '2015-10-24 12:36:01', '1', '2015-10-25 20:09:05', '1', 'Y');
-INSERT INTO `m_article` VALUES ('2', 'test', '<p>testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p><strong><em>asdfasdf</em></strong></p>\n', '2015-10-25 20:00:11', '1', '2015-10-25 20:00:11', '1', 'Y');
-INSERT INTO `m_article` VALUES ('3', 'test', '<p>testset</p>\n\n<p>&nbsp;</p>\n\n<p><strong>sdfgsdfgsfg<em>sdfgsdfg</em></strong></p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>asdfasdf</p>\n', '2015-10-25 20:01:22', '1', '2015-10-25 20:06:10', '1', 'T');
+INSERT INTO `m_article` VALUES ('4', 'Honda Bikin Mobil HR-V Edisi Spesial bagi Penggila Audio', '<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; width: 641.891px; text-align: center;\"><img alt=\"\" src=\"/sanihonda/Pictures/artikel/honda_bikin_mobil_hr_v_edisi_spe.jpg\" style=\"height:249px; width:400px\" /></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">&quot;Pada ajang Gaikindo Indonesia Internasional Auto Show (GIIAS 2015), PT Honda Prospect Motor (HPM) menawarkan Honda HR-V 1.8L E CVT Special Edition JBL Audio.&nbsp;</span></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">Sesuai namanya, mobil ini dlengkapi dengan sistem audio dengan tuning khusus dan speaker baru dari JBL sehingga menghasilkan suara lebih berkarakter khas anak muda.</span></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">Sistem audio JBL dirancang untuk menciptakan sensasi musik dengan kualitas yang merata baik di bangku baris depan maupun belakang. Sistem ini juga didukung sebuah amplifier dan ada menu equalizer.</span></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">Jonfis Fandy,&nbsp;<em>marketing and aftersales service director&nbsp;</em>PT HPM mengatakan, &ldquo;Edisi spesial dari Honda HR-V akan memberikan nilai lebih bagi konsumen. Berbagai fitur canggih yang telah ada sebelumnya, sekarang dilengkapi dengan perangkat entertainment yang bisa membuat perjalanan bersama Honda HR-V semakin menyenangkan.&quot;</span></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">Hanya sistem audio yang diperbaharui. Sisanya Honda HR-V 1.8L E CVT Special Edition JBL Audio tetap mempertahankan fitur standar.</span></div>\n\n<div style=\"margin: 15px 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify; width: 641.891px;\"><span style=\"font-family:inherit; font-size:inherit\">Mobil small SUV edisi spesial ini dipasarkan dengan harga Rp348 juta on the road Jabodetabek.</span></div>\n', '2015-10-26 20:05:57', '1', '2015-10-26 20:05:57', '1', 'Y');
+INSERT INTO `m_article` VALUES ('5', 'Honda Siapkan \"Kakak\" Freed, Bermesin Turbo', '<p style=\"text-align: center;\"><img alt=\"\" src=\"/sanihonda/Pictures/artikel/artikelhonda1.jpg\" style=\"height:390px; width:780px\" /></p>\n\n<p><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Honda Motor Company meluncurkan mobil keluarga baru, Step WGN di Jepang, akhir pekan lalu (24/4/2015). Sesuai namanya, wagon berbodi &quot;</span><em>boxy</em><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">&quot; ini menawarkan ruang yang lapang tetapi tetap menyenangkan untuk dikemudikan.</span><br />\n<br />\n<span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Honda membekali dengan mesin hasil pengembangan baru, 1.5 liter, injeksi langsung, VTEC turbo dipadu transmisi CVT. Step WGN ini merupakan generasi kelima sejak pertama kali diluncurkan khusus untuk pasar Jepang, mengusung tema &quot;Waku Waku Gate&quot; yang secara harafiah artinya menyenangkan.</span><br />\n<br />\n<span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Mobil ini menjadi yang pertama dibekali mesin 1.5 liter turbo yang diklaim setara kemampuannya dengan jantung pacu berkapasitas 2.4 liter, tapi tetap hemat bahan bakar. Honda mengklaim rata-rata konsumsi bahan bakar 17 kpl dengan metode penghitungan JC08.</span><br />\n<span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Kendaraan multi guna ini punya kapasitas 7 penumpang, dengan kamampuan jok melipat dengan komposisi 60-40.&nbsp;</span></p>\n\n<p style=\"text-align: center;\"><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\"><img alt=\"\" src=\"/sanihonda/Pictures/artikel/artikelhonda2.jpg\" style=\"height:390px; width:780px\" /></span></p>\n', '2015-10-26 20:12:16', '1', '2015-10-26 20:12:16', '1', 'Y');
+INSERT INTO `m_article` VALUES ('6', 'Beli Mobil Honda Cukup Modal Rp 19 Juta', '<p style=\"text-align: center;\"><img alt=\"\" src=\"/sanihonda/Pictures/artikel/artikelhonda3.jpg\" style=\"height:390px; width:780px\" /></p>\n\n<p><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Jelang Ramadhan dan musim mudik lebaran periode Juni-Agustus 2015, biasanya dimanfaatkan orang untuk berburu mobil baru. Pameran menjadi salah satu tujuan, karena dipastikan banyak program menarik termasuk promosi khusus.</span></p>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\"><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Salah satu yang bisa dimanfaatkan adalah pameran mobil-mobil Honda dari Honda Jakarta Center (HJC). Diler utama mobil Honda di Jabodetabek itu mengadakan kampanye &rdquo;Honda Mudik Hebat&rdquo; melalui pameran di The Forum, Summarecon Mall Serpong, 8-14 Juni 2015.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\"><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Berbagai program promosi disiapkan di sini, mulai besaran uang muka yang sangat terjangkau ( Rp 19 juta), atau angsuran ringan mulai Rp 1 juta. Tak hanya itu, pengunjung juga siap digelontor dengan hadiah berubah gratis angsuran sampai dengan lima kali, gratis biaya asuransi 1 tahun, serta hemat biaya perawatan hingga enam tahun.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\"><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Bonus khusus diberikan untuk setiap pemesanan&nbsp; Honda Mobilio, Jazz, dan Brio di pameran, berupa kaca film gratis. Sebagai tambahan, disiapkan pula voucher bahan bakar dan&nbsp;<em>cashback</em>&nbsp;dengan total ratusan juta rupiah.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; text-align: justify;\"><span style=\"font-family:opensans,arial,helvetica,sans-serif; font-size:16px\">Pameran ini juga dimanfaatkan untuk memajang&nbsp;<em>line up</em>&nbsp;baru New Honda Accord VTi-L ES yang sudah menerima penambahan fitur keselamatan canggih, misalnya Collision Mitigation Braking System (CMBS), Adaptive Cruise Control (ACC), dan Lane Keeping Assist System (LKAS).</span></div>\n', '2015-10-26 20:14:56', '1', '2015-10-26 20:14:56', '1', 'Y');
+INSERT INTO `m_article` VALUES ('7', 'Mobil Honda CR-Z Bertenaga Listrik Akan Ikut Balap', '<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; line-height: 20.8px; font-family: Arial, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:latolight,sans-serif; font-size:17px\">Honda akan mengikutsertakan mobil CR-Z dalam ajang balap Pikes Peak International Hill Climb di Colorado, Amerika Serikat. Namun, mobil CR-Z yang diikutkan di lomba itu tidak biasa, karena sepenuhnya menggunakan tenaga listrik.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:inherit; font-size:inherit\">Kompetisi balap dengan trek menanjak tersebut sekaligus menjadi ajang uji coba mesin listrik yang digunakan CR-Z.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:inherit; font-size:inherit\">Honda sebenarnya belum mengumumkan spesifikasi CR-Z yang akan digunakan di balap tersebut, namun seorang sumber Honda membeberkan beberapa informasi</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: center;\"><img alt=\"\" src=\"/sanihonda/Pictures/artikel/artikelhonda4.jpg\" style=\"height:450px; width:800px\" /></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:inherit; font-size:inherit\">Menurut sang sumber, Honda akan mengabaikan sementara mesin bensin 1,5 liter yang digunakan pada model standarnya. Selain itu, beredar rumor bahwa motor listrik CR-Z akan digunakan pada mobil&nbsp;<em>hybrid</em>&nbsp;<em>new&nbsp;</em>NSX.</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:inherit; font-size:inherit\">Motor listrik pada CR-Z akan menggerakkan seluruh roda dengan sistem&nbsp;<em>super-handling all wheel drive&nbsp;</em>(SH-AWD) dan&nbsp;<em>precision all wheel steer&nbsp;</em>(P-AWS).</span></div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\">&nbsp;</div>\n\n<div style=\"margin: 0px; padding: 0px; border: 0px; font-stretch: inherit; font-size: 17px; line-height: 24.2857px; font-family: latolight, sans-serif; vertical-align: baseline; box-sizing: border-box; text-align: justify;\"><span style=\"font-family:inherit; font-size:inherit\">Mobil ini akan dilengkapi perangkat aerodinamis yang juga menjadikan tampang mobil<em>coupe&nbsp;</em>itu semakin agresif. Bodi CR-Z yang satu ini akan menggunakan bahan serat karbon.</span></div>\n', '2015-10-26 20:42:48', '1', '2015-10-26 20:42:48', '1', 'Y');
 
 -- ----------------------------
 -- Table structure for m_categories
@@ -76,8 +77,6 @@ CREATE TABLE `m_categories` (
 -- ----------------------------
 -- Records of m_categories
 -- ----------------------------
-INSERT INTO `m_categories` VALUES ('1', 'Mobil Sedan', 'Y', null, null, '2015-10-04 20:32:32', '1');
-INSERT INTO `m_categories` VALUES ('2', '', 'Y', '2015-10-14 12:34:13', '1', '2015-10-14 12:34:13', '1');
 
 -- ----------------------------
 -- Table structure for m_perusahaan
@@ -121,20 +120,15 @@ CREATE TABLE `m_product` (
   `m_product_updated_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `m_product_updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`m_product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of m_product
 -- ----------------------------
-INSERT INTO `m_product` VALUES ('1', 'All New Avanza', 'DIcoba\n\ntesting', '1', 'Y', null, null, '2015-10-18 15:49:18', '1');
-INSERT INTO `m_product` VALUES ('2', 'All new xenia', 'TESTTEST', '1', 'Y', null, null, '2015-10-18 11:22:50', '1');
-INSERT INTO `m_product` VALUES ('3', '', '', '0', 'T', '2015-10-14 12:34:04', '1', '2015-10-18 11:25:40', '1');
-INSERT INTO `m_product` VALUES ('4', 'All New Avanza', 'testes\n                            ', '0', 'Y', '0000-00-00 00:00:00', null, '2015-10-18 14:11:03', '1');
-INSERT INTO `m_product` VALUES ('5', 'All new xenia', '\n           teste                 ', '0', 'Y', '0000-00-00 00:00:00', null, '2015-10-18 14:11:06', null);
-INSERT INTO `m_product` VALUES ('6', 'All New Avanza', 'testes\n                            ', '1', 'Y', '0000-00-00 00:00:00', null, '2015-10-18 11:25:45', '1');
-INSERT INTO `m_product` VALUES ('7', 'All new xenia', '\n           teste                 ', '1', 'Y', '0000-00-00 00:00:00', null, '0000-00-00 00:00:00', null);
-INSERT INTO `m_product` VALUES ('8', 'All New Avanza', 'testes\n                            ', '1', 'Y', '0000-00-00 00:00:00', null, '2015-10-18 11:25:43', '1');
-INSERT INTO `m_product` VALUES ('9', 'All new xenia', 'test', '1', 'Y', '0000-00-00 00:00:00', null, '2015-10-18 15:28:43', '1');
+INSERT INTO `m_product` VALUES ('10', 'BRIO SATYA', '', '0', 'Y', '2015-10-26 21:06:20', '1', '2015-10-26 21:06:20', '1');
+INSERT INTO `m_product` VALUES ('11', 'MOBILIO', '', '0', 'Y', '2015-10-26 21:21:08', '0', '2015-10-26 21:21:08', '0');
+INSERT INTO `m_product` VALUES ('12', 'ALL NEW CITY', '', '0', 'Y', '2015-10-26 21:26:56', '0', '2015-10-26 21:26:56', '0');
+INSERT INTO `m_product` VALUES ('13', 'ALL NEW JAZZ', '', '0', 'Y', '2015-10-26 21:29:39', '0', '2015-10-26 21:29:39', '0');
 
 -- ----------------------------
 -- Table structure for m_transmisi
@@ -149,13 +143,15 @@ CREATE TABLE `m_transmisi` (
   `m_transmisi_updated_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `m_transmisi_updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`m_transmisi_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of m_transmisi
 -- ----------------------------
-INSERT INTO `m_transmisi` VALUES ('1', 'Automatic', 'Y', null, null, '2015-10-14 15:36:21', '1');
-INSERT INTO `m_transmisi` VALUES ('2', 's', 'T', '2015-10-14 10:56:05', '1', '2015-10-14 11:00:03', '1');
+INSERT INTO `m_transmisi` VALUES ('2', 'AT', 'Y', '2015-10-26 20:53:34', '1', '2015-10-26 20:53:35', '1');
+INSERT INTO `m_transmisi` VALUES ('3', 'MT', 'Y', '2015-10-26 20:53:40', '1', '2015-10-26 20:53:40', '1');
+INSERT INTO `m_transmisi` VALUES ('4', 'CVT', 'Y', '2015-10-26 20:53:44', '1', '2015-10-26 20:53:44', '1');
+INSERT INTO `m_transmisi` VALUES ('5', 'CVT Plus', 'Y', '2015-10-26 20:53:50', '1', '2015-10-26 20:53:50', '1');
 
 -- ----------------------------
 -- Table structure for m_type
@@ -170,12 +166,32 @@ CREATE TABLE `m_type` (
   `m_type_updated_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `m_type_updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`m_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of m_type
 -- ----------------------------
-INSERT INTO `m_type` VALUES ('1', 'S', 'Y', null, null, '2015-10-14 10:54:02', '1');
+INSERT INTO `m_type` VALUES ('6', 'A', 'Y', '2015-10-26 20:55:30', '1', '2015-10-26 20:55:30', '1');
+INSERT INTO `m_type` VALUES ('7', 'S', 'Y', '2015-10-26 20:55:34', '1', '2015-10-26 20:55:34', '1');
+INSERT INTO `m_type` VALUES ('8', 'E', 'Y', '2015-10-26 20:55:38', '1', '2015-10-26 20:55:38', '1');
+INSERT INTO `m_type` VALUES ('9', 'RS', 'Y', '2015-10-26 20:55:48', '1', '2015-10-26 20:55:48', '1');
+INSERT INTO `m_type` VALUES ('10', 'ES', 'Y', '2015-10-26 20:56:06', '1', '2015-10-26 20:56:06', '1');
+INSERT INTO `m_type` VALUES ('11', 'A Paket Cermat 1', 'Y', '2015-10-26 20:56:29', '1', '2015-10-26 20:57:12', '1');
+INSERT INTO `m_type` VALUES ('12', 'A Paket Cermat Plus 1', 'Y', '2015-10-26 20:56:37', '1', '2015-10-26 20:57:18', '1');
+INSERT INTO `m_type` VALUES ('13', 'A Paket Cermat 2', 'Y', '2015-10-26 20:56:45', '1', '2015-10-26 20:57:23', '1');
+INSERT INTO `m_type` VALUES ('14', 'A Paket Cermat Plus 2', 'Y', '2015-10-26 20:56:51', '1', '2015-10-26 20:57:28', '1');
+INSERT INTO `m_type` VALUES ('15', 'S Paket Cermat 1', 'Y', '2015-10-26 20:57:06', '1', '2015-10-26 20:57:34', '1');
+INSERT INTO `m_type` VALUES ('16', 'S Paket Cermat Plus 1', 'Y', '2015-10-26 20:58:23', '1', '2015-10-26 20:58:23', '1');
+INSERT INTO `m_type` VALUES ('17', 'S Paket Cermat 2', 'Y', '2015-10-26 20:58:31', '1', '2015-10-26 20:58:31', '1');
+INSERT INTO `m_type` VALUES ('18', 'S Paket Cermat Plus 2', 'Y', '2015-10-26 20:58:43', '1', '2015-10-26 20:58:43', '1');
+INSERT INTO `m_type` VALUES ('19', 'E Paket Cermat 1', 'Y', '2015-10-26 20:59:15', '1', '2015-10-26 20:59:15', '1');
+INSERT INTO `m_type` VALUES ('20', 'E Paket Cermat Plus 1', 'Y', '2015-10-26 20:59:35', '1', '2015-10-26 20:59:35', '1');
+INSERT INTO `m_type` VALUES ('21', 'E Paket Cermat 2', 'Y', '2015-10-26 20:59:47', '1', '2015-10-26 20:59:47', '1');
+INSERT INTO `m_type` VALUES ('22', 'E Paket Cermat Plus 2', 'Y', '2015-10-26 20:59:59', '1', '2015-10-26 20:59:59', '1');
+INSERT INTO `m_type` VALUES ('23', 'RS Paket Cermat 1', 'Y', '2015-10-26 21:01:28', '1', '2015-10-26 21:01:28', '1');
+INSERT INTO `m_type` VALUES ('24', 'RS Paket Cermat Plus 1', 'Y', '2015-10-26 21:01:35', '1', '2015-10-26 21:01:35', '1');
+INSERT INTO `m_type` VALUES ('25', 'RS Paket Cermat 2', 'Y', '2015-10-26 21:01:40', '1', '2015-10-26 21:01:40', '1');
+INSERT INTO `m_type` VALUES ('26', 'RS Paket Cermat Plus 2', 'Y', '2015-10-26 21:01:47', '1', '2015-10-26 21:01:47', '1');
 
 -- ----------------------------
 -- Table structure for s_user
@@ -239,16 +255,19 @@ CREATE TABLE `t_photoproduct` (
   `t_photoproduct_updated_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `t_photoproduct_updated_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`t_photoproduct_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_photoproduct
 -- ----------------------------
-INSERT INTO `t_photoproduct` VALUES ('2', '5.jpg', '0', '1', '2015-10-11 14:11:29', '1', '2015-10-11 14:11:29', '1');
-INSERT INTO `t_photoproduct` VALUES ('7', 'Selection_025.jpg', '0', '2', '2015-10-11 14:30:26', '1', '2015-10-11 14:30:26', '1');
-INSERT INTO `t_photoproduct` VALUES ('8', 'video-2012-04-27-17-25-44.mp4', '0', '2', '2015-10-11 14:36:16', '1', '2015-10-11 14:36:16', '1');
-INSERT INTO `t_photoproduct` VALUES ('9', 'DSC_3016.JPG', '1', '1', '2015-10-11 14:52:40', '1', '2015-10-11 14:56:24', '1');
-INSERT INTO `t_photoproduct` VALUES ('10', 'Selection_035.jpg', '0', '1', '2015-10-14 21:04:04', '1', '2015-10-14 21:04:04', '1');
+INSERT INTO `t_photoproduct` VALUES ('11', 'honda-brio-satya.jpg', '1', '10', '2015-10-26 21:08:37', '1', '2015-10-26 21:31:57', '0');
+INSERT INTO `t_photoproduct` VALUES ('16', 'harga_honda_brio.jpg', '0', '10', '2015-10-26 21:18:53', '1', '2015-10-26 21:18:53', '1');
+INSERT INTO `t_photoproduct` VALUES ('17', 'Mobilio.jpg', '1', '11', '2015-10-26 21:24:16', '0', '2015-10-26 21:33:14', '0');
+INSERT INTO `t_photoproduct` VALUES ('18', 'honda-mobilio-tafeta-white.jpg', '0', '11', '2015-10-26 21:24:22', '0', '2015-10-26 21:24:22', '0');
+INSERT INTO `t_photoproduct` VALUES ('19', 'honda-city1_505_112513042953.jpg', '1', '12', '2015-10-26 21:27:59', '0', '2015-10-26 21:33:21', '0');
+INSERT INTO `t_photoproduct` VALUES ('20', 'The_All-_New_City_has_set_a_new_benchmark_with_10,000_bookings_in_1_month.jpg', '0', '12', '2015-10-26 21:28:02', '0', '2015-10-26 21:28:02', '0');
+INSERT INTO `t_photoproduct` VALUES ('21', 'jazz.jpg', '1', '13', '2015-10-26 21:30:47', '0', '2015-10-26 21:33:28', '0');
+INSERT INTO `t_photoproduct` VALUES ('22', 'fit-rs-01-630x331.jpg', '0', '13', '2015-10-26 21:30:51', '0', '2015-10-26 21:30:51', '0');
 
 -- ----------------------------
 -- Table structure for t_price
@@ -266,13 +285,25 @@ CREATE TABLE `t_price` (
   `t_price_updated_by` int(11) DEFAULT NULL,
   `t_price_view` int(1) DEFAULT '0' COMMENT 'harga yang ditampilkan didepan, 1 untuk ya , 0 untuk tidak',
   PRIMARY KEY (`t_price_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of t_price
 -- ----------------------------
-INSERT INTO `t_price` VALUES ('4', '2', '1', '1', '221', '2015-10-14 20:43:56', '1', '2015-10-14 20:43:56', '1', '0');
-INSERT INTO `t_price` VALUES ('9', '1', '1', '1', '400000', '2015-10-14 21:21:10', '1', '2015-10-18 17:27:38', '1', '1');
+INSERT INTO `t_price` VALUES ('10', '10', '6', '3', '114900000', '2015-10-26 21:19:34', '1', '2015-10-26 21:34:03', '0', '1');
+INSERT INTO `t_price` VALUES ('11', '10', '11', '3', '117500000', '2015-10-26 21:19:58', '1', '2015-10-26 21:19:58', '1', '0');
+INSERT INTO `t_price` VALUES ('12', '10', '12', '3', '119400000', '2015-10-26 21:20:15', '1', '2015-10-26 21:20:15', '1', '0');
+INSERT INTO `t_price` VALUES ('13', '10', '7', '3', '119900000', '2015-10-26 21:20:31', '1', '2015-10-26 21:20:31', '1', '0');
+INSERT INTO `t_price` VALUES ('14', '11', '7', '3', '176500000', '2015-10-26 21:25:05', '0', '2015-10-26 21:37:01', '1', '1');
+INSERT INTO `t_price` VALUES ('15', '11', '15', '3', '174200000', '2015-10-26 21:25:28', '0', '2015-10-26 21:25:28', '0', '0');
+INSERT INTO `t_price` VALUES ('16', '11', '8', '3', '197000000', '2015-10-26 21:26:11', '0', '2015-10-26 21:26:11', '0', '0');
+INSERT INTO `t_price` VALUES ('17', '11', '8', '4', '208000000', '2015-10-26 21:26:33', '0', '2015-10-26 21:26:33', '0', '0');
+INSERT INTO `t_price` VALUES ('18', '12', '7', '3', '285500000', '2015-10-26 21:28:25', '0', '2015-10-26 21:37:13', '1', '1');
+INSERT INTO `t_price` VALUES ('19', '12', '7', '4', '295500000', '2015-10-26 21:28:44', '0', '2015-10-26 21:28:44', '0', '0');
+INSERT INTO `t_price` VALUES ('20', '12', '8', '3', '300000000', '2015-10-26 21:29:04', '0', '2015-10-26 21:29:04', '0', '0');
+INSERT INTO `t_price` VALUES ('21', '13', '6', '3', '206000000', '2015-10-26 21:31:08', '0', '2015-10-26 21:37:18', '1', '1');
+INSERT INTO `t_price` VALUES ('22', '13', '7', '3', '224000000', '2015-10-26 21:31:19', '0', '2015-10-26 21:31:19', '0', '0');
+INSERT INTO `t_price` VALUES ('23', '13', '7', '4', '234000000', '2015-10-26 21:31:35', '0', '2015-10-26 21:31:35', '0', '0');
 
 -- ----------------------------
 -- View structure for v_price

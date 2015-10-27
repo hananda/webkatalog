@@ -184,13 +184,18 @@ class Model_public extends CI_Model {
 				$config['overwrite'] = 'TRUE';
 	            $config['file_ext_tolower'] = 'TRUE';
 	            $config['ext_not_overwrite'] = 'TRUE';
-	            $config['file_name'] = $nama_file;
+	            $config['file_name'] = str_replace(" ", "_", $nama_file);
+	        }else{
+				$config['overwrite'] = 'TRUE';
+	            $config['file_ext_tolower'] = 'TRUE';
+	            $config['ext_not_overwrite'] = 'TRUE';
+	        	$config['file_name'] = str_replace(" ", "_", $_FILES[$inputName]['name']);
 	        }
 
 			$this->load->library('upload');
 			$this->upload->initialize($config);
 
-			$json['file'] = $_FILES[$inputName]['name'];
+			// $json['file'] = $_FILES[$inputName]['name'];
 			if (!$this->upload->do_upload($inputName)) {
 				$error = array('error' => $this->upload->display_errors());
 				$result = array(
@@ -201,7 +206,7 @@ class Model_public extends CI_Model {
 				//$upload_data = $this->upload->data();
 				$result = array(
 					'stats' => true,
-					'nama' => $json['file']
+					'nama' => $config['file_name']
 				);
 			}
 		}else{

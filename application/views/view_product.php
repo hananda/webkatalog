@@ -56,7 +56,7 @@
                         <label for="kategori" class="control-label col-md-3 col-sm-3 col-xs-12">kategori produk
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select class="form-control" name="kategori" id="kategori" required>
+                            <select class="form-control" name="kategori" id="kategori">
                                 <option value="">Pilih Kategori</option>
                                 <?php if ($categories->num_rows > 0): ?>
                                     <?php foreach ($categories->result() as $r): ?>
@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi produk</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea class="resizable_textarea form-control" required style="width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 87px;" name="desc" id="desc">
+                            <textarea class="resizable_textarea form-control" style="width: 100%; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 87px;" name="desc" id="desc">
 
                             </textarea>
                         </div>
@@ -585,7 +585,7 @@
                 var id = dataedit[0];
                 var aktif = $(this).data().aktif;
                 if (sure) {
-                    $.post("<?php echo base_url(); ?>produk/index/setmainfoto", {'idfoto': id,aktif:aktif}, function (response) {
+                    $.post("<?php echo base_url(); ?>produk/index/setmainfoto", {'idfoto': id,aktif:aktif,idproduk:idproduk}, function (response) {
                         if(response.status){
                             NotifikasiToast({
                                 type : 'success', // ini tipe notifikasi success,warning,info,error
@@ -642,7 +642,7 @@
                 var id = dataedit[0];
                 var aktif = $(this).data().aktif;
                 if (sure) {
-                    $.post("<?php echo base_url(); ?>produk/index/setmainharga", {'idharga': id,aktif:aktif}, function (response) {
+                    $.post("<?php echo base_url(); ?>produk/index/setmainharga", {'idharga': id,aktif:aktif,idproduk:idproduk}, function (response) {
                         if(response.status){
                             NotifikasiToast({
                                 type : 'success', // ini tipe notifikasi success,warning,info,error

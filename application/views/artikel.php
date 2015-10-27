@@ -58,10 +58,9 @@
              <div class="top-nav">
                 <ul class="memenu skyblue">
                     <li class="<?php echo ($actual_link == base_url()) ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a>
-                    <li class="<?php echo ($actual_link == base_url()."produkkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a>
-                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a>
-                    </li>
+                    <li class="<?php echo ($actual_link == base_url()."artikel") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>artikel">Artikel</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."produkkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>produkkami">Produk</a></li>
+                    <li class="<?php echo ($actual_link == base_url()."tentangkami") ? 'active' : ''; ?>"><a href="<?php echo base_url(); ?>tentangkami">Tentang Kami</a></li>
                     <!-- <li class="grid"><a href="contact.html">Kontak Kami</a></li>                     -->
                 </ul>               
              </div>
@@ -130,7 +129,13 @@
                                     <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Lihat Selengkapnya</button>
                                     </h4>
                                     </div>
-                                </div></a>
+                                </div></a>                     
+                                <div class="product-info simpleCart_shelfItem">
+                                    <div class="product-info-cust prt_name">
+                                        <h4><?php echo $r->m_article_title; ?></h4>
+                                    </div>                                              
+                                    
+                                </div>
                             </div>  
                         <?php endforeach ?>
                     <?php endif ?>

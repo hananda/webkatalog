@@ -146,6 +146,7 @@
                         msg : response.message, //ini isi pesan
                         title : '', //ini judul pesan
                     });
+                    table.ajax.reload();
                     $("#btnbatal").click();
                 }
                 else{
